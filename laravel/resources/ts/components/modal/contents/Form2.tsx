@@ -12,7 +12,6 @@ const Form2 = () => {
             <p>※後で設定することも可能です。</p>
             <InputFile
                 name={'logo'}
-                type={'file'}
             />
             <Button
                 id={'js-modal_next'}
