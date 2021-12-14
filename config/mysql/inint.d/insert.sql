@@ -1,0 +1,1 @@
+INSERT INTO users_table (name, email, password)
