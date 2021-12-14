@@ -272,7 +272,7 @@ button {
   padding: 1px 2px;
 }
 
-.modal-content #form2 .modal-form__item .modal-form__fname .cancel-btn {
+.modal-content #form2 .modal-form__item .modal-form__fname .clear-btn {
   width: 20px;
   height: 100%;
   background-color: inherit;
@@ -280,11 +280,11 @@ button {
   display: none;
 }
 
-.modal-content #form2 .modal-form__item .modal-form__fname .cancel-btn.view {
+.modal-content #form2 .modal-form__item .modal-form__fname .clear-btn.view {
   display: block;
 }
 
-.modal-content #form2 .modal-form__item .modal-form__fname .cancel-btn::before {
+.modal-content #form2 .modal-form__item .modal-form__fname .clear-btn::before {
   content: "";
   display: block;
   width: 17px;
@@ -297,7 +297,7 @@ button {
   background-color: #b4b4b4;
 }
 
-.modal-content #form2 .modal-form__item .modal-form__fname .cancel-btn::after {
+.modal-content #form2 .modal-form__item .modal-form__fname .clear-btn::after {
   content: "";
   display: block;
   width: 17px;
