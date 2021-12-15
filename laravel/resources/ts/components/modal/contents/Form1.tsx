@@ -8,7 +8,7 @@ interface Form1Props {
 
 const Form1 = (props: Form1Props) => {
 
-    const setModalForm1Data = () => {
+    const setModalFormData = () => {
         const inputList = document.querySelectorAll('.modal-form__input');
         inputList.forEach(el => {
             props.modalFormData[(el as HTMLInputElement).name] = (el as HTMLInputElement).value;
@@ -17,7 +17,7 @@ const Form1 = (props: Form1Props) => {
     }
 
     const onClick = () => {
-        setModalForm1Data();
+        setModalFormData();
         props.next();
     }
 
