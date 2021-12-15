@@ -22,7 +22,7 @@ const Content = (props: ContentProps) => {
         <div className="modal-content__inner" id={idList[pageNum - 1]}>
             { pageNum === 1 && <Welcome onClick = {() => next()}/>}
             { pageNum === 2 && <Form1 next={next} modalFormData={ModalFormData}/>}
-            { pageNum === 3 && <Form2 />}
+            { pageNum === 3 && <Form2 next={next} modalFormData={ModalFormData}/>}
             { pageNum === 4 && <Confirm />}
         </div>
     )
