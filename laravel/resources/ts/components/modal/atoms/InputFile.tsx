@@ -1,15 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, forwardRef } from "react";
 
 interface InputFileProps {
     name: string;
-}
+};
 
-const InputFile = (props: InputFileProps) => {
+const InputFile = forwardRef((props: InputFileProps, ref: any) => {
 
     const defaultFileName = '選択されていません';
     const defaultDnd = 'images/dnd.jpg';
     const [fileName, setFileName] = React.useState('選択されていません');
-    const inputFile = useRef(null);
     const clearBtn = useRef(null);
     const canvas = useRef(null);
 
@@ -22,7 +21,7 @@ const InputFile = (props: InputFileProps) => {
             previewImage(file);
             clearBtnView();
         }
-    }
+    };
 
     //画像ファイルを表示
     const previewImage = (file: any): void => {
@@ -38,36 +37,36 @@ const InputFile = (props: InputFileProps) => {
             });
         });
         reader.readAsDataURL(file);
-    }
+    };
 
     //画像ファイルを非表示
     const hideImage = (): void => {
         const ctx = canvas.current.getContext('2d');
         ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
-    }
+    };
 
     //ファイルの削除
     const deleteFlieName = (): void => {
         setFileName(defaultFileName);
-        inputFile.current.value = '';
-    }
+        ref.current.value = '';
+    };
 
     //キャンセルボタン表示　
     const clearBtnView = (): void => {
         clearBtn.current.classList.add('view');
-    }
+    };
 
     //クリアボタンのクリックイベント
     const clearBtnClick = (e: any): void => {
         deleteFlieName();
         clearBtn.current.classList.remove('view');
         hideImage();
-    }
+    };
 
     //参照ボタンのクリックイベント
     const browseBtnClick = (): void => {
-        inputFile.current.click();
-    }
+        ref.current.click();
+    };
 
     return (
         <React.Fragment>
@@ -78,14 +77,14 @@ const InputFile = (props: InputFileProps) => {
                 </div>
                 <label className="modal-form__label" htmlFor={props.name}>
                     <button type="button" className="browse-btn" onClick={() => browseBtnClick()}><i className="fas fa-folder"></i></button>
-                    <input id={props.name} className="modal-form__input d-none" ref={inputFile} onChange={e => selectFile(e)} type='file' name={props.name} multiple/>
+                    <input id={props.name} className="modal-form__input d-none" ref={ref} onChange={e => selectFile(e)} type='file' name={props.name} multiple/>
                 </label>
             </div>
             <div className="preview-outer">
                 <canvas ref={canvas} id="preview"></canvas>
             </div>
         </React.Fragment>
-    );
-}
+    )
+});
 
 export default InputFile;

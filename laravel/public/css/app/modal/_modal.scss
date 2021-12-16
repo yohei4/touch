@@ -1,0 +1,130 @@
+@import './welcome';
+@import './form0';
+@import './form1';
+@import './form2';
+@import './confilm';
+
+#modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    text-align: center;
+    display: none;
+    transition: all 2s ease;
+    & .bg-black {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: 0;
+    }
+    & #modal-main {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        background: #fff;
+        border-radius: 5px;
+        width: 60%;
+        height: 65%;
+        opacity: 0;
+    }
+}
+
+//モダールのコンテンツの中身
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    border: none;
+    background-color: inherit;
+    width: 100%;
+    height: 65%;
+
+    & .modal-content__inner {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+}
+
+//モーダルのボタン基本スタイル
+.modal-btn {
+    cursor: pointer;
+    background: #B9B9B9;
+    display: inline-block;
+    vertical-align: bottom;
+    width: 139px;
+    height: 44px;
+    margin: auto auto 0;
+    // position: absolute;
+    // bottom: 0;
+    // left: 50%;
+    // transform: translateX(-50%);
+    &__txt {
+        font-size: 21px;
+        color: #fff;
+    }
+}
+
+//モーダルのform1&form2のタイトル
+.modal-form__title {
+    font-size: 28px;
+}
+
+//モーダル参照時
+.js-show__modal {
+    display: block !important;
+    & .bg-black {
+        @include animation (
+            $name: modalBg,
+            $duration: .7s,
+            $timing-function: ease,
+            $delay: .3s,
+        );
+    }
+
+    & #modal-main {
+        @include animation (
+            $name: modalShow,
+            $duration: .82s,
+            $timing-function: ease,
+            $delay: .4s,
+        );
+    }
+}
+
+//モーダルクローズ時
+.js-close__modal {
+    display: none !important;
+}
+
+//アニメーション関係
+@keyframes modalBg {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: .6;
+    }
+}
+
+@keyframes modalShow {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}

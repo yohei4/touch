@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Button} from './index';
 
-const Confirm = () => {
+interface ConfilmProps {
+    formData: object
+};
+
+const Confirm = (props: ConfilmProps) => {
+    useEffect(() => {
+        console.log(props.formData);
+    });
+
     return (
         <React.Fragment>
             <h1 className="modal-logo"><img src={'images/logo.png'} alt="アプリのロゴ"/></h1>
@@ -15,6 +23,6 @@ const Confirm = () => {
             />
         </React.Fragment>
     )
-}
+};
 
 export default Confirm;

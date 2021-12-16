@@ -1,0 +1,16 @@
+//form0
+#form0 {
+    & .form-item__outer {
+        display: flex;
+        justify-content: center;
+
+        & .modal-form__item {
+            width: fit-content;
+            & .modal-form__label {
+                width: 200px;
+                display: block;
+                text-align: left;
+            }
+        }
+    }
+}

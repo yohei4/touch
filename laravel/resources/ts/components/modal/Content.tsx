@@ -1,31 +1,44 @@
-import React, { useEffect } from 'react';
-import {Welcome, Form1, Form2, Confirm, ModalFormData} from './index';
+import React, { useState } from 'react';
+import { Welcome, Form0, Form1, Form2, Confirm } from './index';
 
 interface ContentProps {
 
-}
+};
 
 const Content = (props: ContentProps) => {
+    //DOM.id
+    const [id, setId] = useState(null);
+
+    //ページ数
     const [pageNum, setPageNum] = React.useState(1);
-    const idList: string[] = ["welcome", "form1", "form2", "confilm"];
-    // const idList: string[] = ["form2"];
 
+    //フォームデータ
+    const [formData, setFormData] = useState({
+        name: "",
+        pCode: "",
+        address: "",
+        logo: {} as object
+    });
+
+    //nextBtnのハンドラ
     const next = () :void => {
-        if(pageNum !== 4) setPageNum(pageNum + 1);
-    }
+        if(pageNum !== 5) setPageNum(pageNum + 1);
+    };
 
+    //念の為作成
     const prev = () :void => {
         if(pageNum !== 1) setPageNum(pageNum - 1);
-    }
+    };
 
     return (
-        <div className="modal-content__inner" id={idList[pageNum - 1]}>
-            { pageNum === 1 && <Welcome onClick = {() => next()}/>}
-            { pageNum === 2 && <Form1 next={next} modalFormData={ModalFormData}/>}
-            { pageNum === 3 && <Form2 next={next} modalFormData={ModalFormData}/>}
-            { pageNum === 4 && <Confirm />}
+        <div className="modal-content__inner" id={id}>
+            { pageNum == 1 && <Welcome setId={setId} onClick = {() => next()}/>}
+            {/* { pageNum == 2 && <Form0 formData={formData} setId={setId} next={next} setFormData={setFormData}/>} */}
+            { pageNum == 2 && <Form1 formData={formData} setId={setId} next={next} setFormData={setFormData}/>}
+            { pageNum == 3 && <Form2 formData={formData} setId={setId} next={next} setFormData={setFormData}/>}
+            { pageNum == 4 && <Confirm formData={formData}/>}
         </div>
     )
-}
+};
 
 export default Content;
