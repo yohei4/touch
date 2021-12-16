@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { createRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {Content} from './index';
 
 function Modal() {
+    const modal = createRef<HTMLDivElement>();
     const [modalIsOpen, setIsOpen] = React.useState(false);
 
     useEffect(() => {
@@ -11,21 +12,18 @@ function Modal() {
     });
 
     const modalOpen = () :void => {
-        const modal = document.querySelector('#modal');
-        if(!modal) return;
-
-        modal.classList.add('js-show__modal');
+        modal.current.parentElement.parentElement.classList.add('js-show__modal');
     };
 
     return (
-        <div className="modal-content">
+        <div className="modal-content" ref={modal}>
             <Content />
         </div>
-    );
-}
+    )
+};
 
 export default Modal;
 
 if (document.getElementById('modal-main')) {
     ReactDOM.render(<Modal />, document.getElementById('modal-main'));
-}
+};

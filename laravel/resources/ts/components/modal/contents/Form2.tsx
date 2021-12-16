@@ -1,27 +1,27 @@
-import React from "react";
-import { ModalFormData } from "..";
-import {Button, Title, Input, InputFile} from './index';
+import React, { createRef, useEffect } from "react";
+import {Button, Title, InputFile} from './index';
 
 interface Form2Props {
-    modalFormData: any;
+    formData: any;
+    setFormData(object: object): void;
     next(): void;
-}
+    setId(id: string): void;
+};
 
 const Form2 = (props: Form2Props) => {
+    useEffect(() => {
+        props.setId('form2');
+    });
 
-    const setModalFormData = (): void => {
-        console.log(props.modalFormData);
-        const inputList = document.querySelectorAll('.modal-form__input');
-        inputList.forEach(el => {
-            props.modalFormData[(el as HTMLInputElement).name] = (el as HTMLInputElement).value;
-        });
-        console.log(props.modalFormData);
-    }
+    const refLogo = createRef<HTMLInputElement>();
 
     const onClick = (): void => {
-        setModalFormData();
+        props.setFormData({
+            ...props.formData,
+            logo: refLogo.current
+        });
         props.next();
-    }
+    };
 
     return (
         <React.Fragment>
@@ -31,6 +31,7 @@ const Form2 = (props: Form2Props) => {
             <p>※後で設定することも可能です。</p>
             <InputFile
                 name={'logo'}
+                ref={refLogo}
             />
             <Button
                 id={'js-modal_next'}
@@ -39,7 +40,7 @@ const Form2 = (props: Form2Props) => {
                 type={'submit'}
             />
         </React.Fragment>
-    );
-}
+    )
+};
 
 export default Form2;
