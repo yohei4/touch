@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Button} from './index';
 
 interface WelcomeProps {
+    setId(id: string): void;
     onClick: () => void;
-}
+};
 
 const Welcome = (props: WelcomeProps) => {
+    useEffect(() => {
+        props.setId('welcome');
+    });
+
     return (
         <React.Fragment>
             <h1 className="modal-logo"><img src={'images/logo.png'} alt="アプリのロゴ"/></h1>
@@ -18,7 +23,7 @@ const Welcome = (props: WelcomeProps) => {
                 type={'button'}
             />
         </React.Fragment>
-    );
-}
+    )
+};
 
 export default Welcome;
