@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Welcome, Form0, Form1, Form2, Confirm } from './index';
+import { Welcome, Form1, Form2, Confirm, Finish } from './index';
 
 interface ContentProps {
 
@@ -16,7 +16,9 @@ const Content = (props: ContentProps) => {
     const [formData, setFormData] = useState({
         name: "",
         pCode: "",
-        address: "",
+        add1: "",
+        add2: "",
+        add3: "",
         logo: {} as object
     });
 
@@ -33,10 +35,10 @@ const Content = (props: ContentProps) => {
     return (
         <div className="modal-content__inner" id={id}>
             { pageNum == 1 && <Welcome setId={setId} onClick = {() => next()}/>}
-            {/* { pageNum == 2 && <Form0 formData={formData} setId={setId} next={next} setFormData={setFormData}/>} */}
             { pageNum == 2 && <Form1 formData={formData} setId={setId} next={next} setFormData={setFormData}/>}
             { pageNum == 3 && <Form2 formData={formData} setId={setId} next={next} setFormData={setFormData}/>}
             { pageNum == 4 && <Confirm formData={formData}/>}
+            { pageNum == 5 && <Finish/>}
         </div>
     )
 };

@@ -2,3 +2,14 @@
     width: 100%;
     display: flex;
 }
+
+.form-required {
+    font-size: 7.5px;
+    color: white;
+    background-color: rgb(255, 65, 65);
+    padding: 2px 4px;
+    margin-left: 10px;
+    &::after {
+        content: '必須';
+    }
+}

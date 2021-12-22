@@ -1,5 +1,5 @@
-import React, { createRef, useEffect } from "react";
-import {Button, Title, InputFile} from './index';
+import React, { createRef, useEffect, forwardRef } from "react";
+import {Button, Title, InputFile, Preview} from './index';
 
 interface Form2Props {
     formData: any;
@@ -18,7 +18,7 @@ const Form2 = (props: Form2Props) => {
     const onClick = (): void => {
         props.setFormData({
             ...props.formData,
-            logo: refLogo.current
+            logo: refLogo.current.files[0]
         });
         props.next();
     };

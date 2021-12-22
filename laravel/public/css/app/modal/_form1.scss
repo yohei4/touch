@@ -1,46 +1,22 @@
 //form1
 #form1 {
-    & .form-item__outer {
+    & .modal-form__content {
         display: flex;
         justify-content: center;
-        width: 500px;
-        margin: 0 auto;
-        &:nth-child(4) {
-            & .modal-form__item {
-                & .modal-form__input {
-                    width: 100%;
+        & .form-item__outer {
+            width: fit-content;
+            margin: 0 12.5px;
+            & .form-item {
+                margin-bottom: 12px;
+                text-align: left;
+                & .form-label {
+                     margin: 0;
+                }
+                & .form-input {
+                    width: 200px;
+                    padding: 0.175rem 0.5rem;
                 }
             }
-        }
-    }
-    & .modal-form__item {
-        // width: fit-content;
-        margin: 0 5px;
-
-        & .modal-form__label {
-             display: block;
-             text-align: left;
-        }
-        & #name {
-
-        }
-        & #pCode {
-            width: 95px;
-        }
-        & #add1 {
-
-        }
-        & #add2 {
-
-        }
-        & #add3 {
-
-        }
-        & #add4 {
-
-        }
-        & #tel {
-
         }
     }
 }

@@ -23,6 +23,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 */
 Route::get('/', 'MainController@index')->name('top_page');
 
+
+/**
+* 店舗情報登録
+*/
+Route::post('/restaurant/ajax/save', 'Ajax\RestaurantContoller@save')->name('restaurantAjaxSave');
+
 /**
  * サイドメニュー
  */

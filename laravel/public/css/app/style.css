@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   overscroll-behavior: contain;
 }
@@ -27,6 +28,18 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.form-required {
+  font-size: 7.5px;
+  color: white;
+  background-color: #ff4141;
+  padding: 2px 4px;
+  margin-left: 10px;
+}
+
+.form-required::after {
+  content: '必須';
 }
 
 #main {
@@ -216,32 +229,34 @@ button {
   text-align: left;
 }
 
-#form1 .form-item__outer {
+#form1 .modal-form__content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 500px;
-  margin: 0 auto;
 }
 
-#form1 .form-item__outer:nth-child(4) .modal-form__item .modal-form__input {
-  width: 100%;
+#form1 .modal-form__content .form-item__outer {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 12.5px;
 }
 
-#form1 .modal-form__item {
-  margin: 0 5px;
-}
-
-#form1 .modal-form__item .modal-form__label {
-  display: block;
+#form1 .modal-form__content .form-item__outer .form-item {
+  margin-bottom: 12px;
   text-align: left;
 }
 
-#form1 .modal-form__item #pCode {
-  width: 95px;
+#form1 .modal-form__content .form-item__outer .form-item .form-label {
+  margin: 0;
+}
+
+#form1 .modal-form__content .form-item__outer .form-item .form-input {
+  width: 200px;
+  padding: 0.175rem 0.5rem;
 }
 
 #form2 .modal-form__item {
