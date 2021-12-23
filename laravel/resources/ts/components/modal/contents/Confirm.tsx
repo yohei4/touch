@@ -4,18 +4,35 @@ import { Button, Title, ConfilmItem, Preview } from './index';
 
 interface ConfilmProps {
     formData: any;
+    next(): void;
 };
 
 const Confirm = (props: ConfilmProps) => {
     useEffect(() => {
-        console.log(props.formData);
+        // console.log(props.formData);
     });
 
     const onclick = () => {
-        axios.post('/restaurant/ajax/save', props.formData)
+        const fd = new FormData();
+        setFormData(fd);
+        axios.post('/restaurant/ajax/save', fd)
         .then(function (response) {
             console.log(response.data);
-        });
+        })
+        .catch((error) => {
+            console.log(error.response);
+        })
+        props.next();
+    };
+
+    const setFormData = (fd: FormData) => {
+        fd.append('name', props.formData.name);
+        fd.append('pCode', props.formData.pCode);
+        fd.append('add1', props.formData.add1);
+        fd.append('add2', props.formData.add2);
+        fd.append('add3', props.formData.add3);
+        fd.append('tel', props.formData.tel);
+        fd.append('logo', props.formData.logo);
     }
 
     return (
