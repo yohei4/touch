@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class RestaurantRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class RestaurantRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,14 +27,25 @@ class RestaurantRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'post_code' => 'required|max:8',
-            'address_1' => 'required|max:4',
-            'address_2' => 'required|max:12',
-            'address_3' => 'required|max:32',
-            'address_4' => 'max:32',
+            'pCode' => 'required|max:8',
+            'add1' => 'required|max:26',
+            'add2' => 'required|max:32',
+            'add3' => 'nullable|max:32',
             'tel' => 'required|max:11',
-            'table_count',
-            'comment' => 'max:500',
+            'logo' => 'file|max:5000|mimes:jpeg,png,jpg',
+            'table_count' => 'nullable',
+            'comment' => 'nullable|max:500',
         ];
     }
+
+    // protected function failedValidation(Validator $validator)
+    // {
+    //     if (request()->expectsJson()) {
+    //         $response['errors']  = $validator->errors()->toArray();
+
+    //         throw new HttpResponseException(
+    //             response()->json( $response, 422 )
+    //         );
+    //     }
+    // }
 }

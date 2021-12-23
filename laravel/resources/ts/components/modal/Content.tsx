@@ -37,7 +37,7 @@ const Content = (props: ContentProps) => {
             { pageNum == 1 && <Welcome setId={setId} onClick = {() => next()}/>}
             { pageNum == 2 && <Form1 formData={formData} setId={setId} next={next} setFormData={setFormData}/>}
             { pageNum == 3 && <Form2 formData={formData} setId={setId} next={next} setFormData={setFormData}/>}
-            { pageNum == 4 && <Confirm formData={formData}/>}
+            { pageNum == 4 && <Confirm formData={formData} next={next}/>}
             { pageNum == 5 && <Finish/>}
         </div>
     )
