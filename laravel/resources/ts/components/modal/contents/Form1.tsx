@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { createRef, useEffect } from "react";
 import {Button, Input, Title, Select } from './index';
 
@@ -21,16 +22,34 @@ const Form1 = (props: Form1Props) => {
     const refTel = createRef<HTMLInputElement>();
 
     const onClick = () => {
-        props.setFormData({
-            ...props.formData,
-            name: refName.current.value,
-            pCode: refPCode.current.value,
-            add1: refAdd1.current.value,
-            add2: refAdd2.current.value,
-            add3: refAdd3.current.value,
-            tel: refTel.current.value,
+        const fd = new FormData();
+        setFd(fd);
+        axios.post('/restaurant/ajax/validation1', fd)
+        .then(response => {
+            console.log(response);
+            props.setFormData({
+                ...props.formData,
+                name: response.data.restaurant_name,
+                pCode: response.data.postal_code,
+                add1: response.data.address_1,
+                add2: response.data.address_2,
+                add3: response.data.address_3,
+                tel: response.data.tel,
+            });
+            props.next();
+        })
+        .catch(error => {
+            console.log(error.response.data.errors);
         });
-        props.next();
+    };
+
+    const setFd = (fd: FormData) => {
+        fd.append('restaurant_name', refName.current.value);
+        fd.append('postal_code', refPCode.current.value);
+        fd.append('address_1', refAdd1.current.value);
+        fd.append('address_2', refAdd2.current.value);
+        fd.append('address_3', refAdd3.current.value);
+        fd.append('tel', refTel.current.value);
     };
 
     return (

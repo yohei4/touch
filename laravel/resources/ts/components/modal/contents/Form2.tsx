@@ -18,7 +18,7 @@ const Form2 = (props: Form2Props) => {
     const onClick = (): void => {
         props.setFormData({
             ...props.formData,
-            logo: refLogo.current.files[0]
+            logo: refLogo.current.files[0] != undefined ? refLogo.current.files[0] : ''
         });
         props.next();
     };

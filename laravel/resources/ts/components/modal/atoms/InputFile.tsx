@@ -8,7 +8,7 @@ const InputFile = forwardRef((props: InputFileProps, ref: any) => {
 
     const defaultFileName = '選択されていません';
     const defaultDnd = 'images/dnd.jpg';
-    const [fileName, setFileName] = React.useState('選択されていません');
+    const [fileName, setFileName] = React.useState(defaultFileName);
     const clearBtn = useRef(null);
     const canvas = useRef(null);
 

@@ -26,26 +26,26 @@ class RestaurantRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'pCode' => 'required|max:8',
-            'add1' => 'required|max:26',
-            'add2' => 'required|max:32',
-            'add3' => 'nullable|max:32',
+            'restaurant_name' => 'required',
+            'postal_code' => 'required|max:8',
+            'address_1' => 'required|max:26',
+            'address_2' => 'required|max:32',
+            'address_3' => 'nullable|max:32',
             'tel' => 'required|max:11',
-            'logo' => 'file|max:5000|mimes:jpeg,png,jpg',
+            'logo' => 'nullable|image|max:10000',
             'table_count' => 'nullable',
             'comment' => 'nullable|max:500',
         ];
     }
 
-    // protected function failedValidation(Validator $validator)
-    // {
-    //     if (request()->expectsJson()) {
-    //         $response['errors']  = $validator->errors()->toArray();
+    protected function failedValidation(Validator $validator)
+    {
+        if (request()->expectsJson()) {
+            $response['errors'] = $validator->errors()->toArray();
 
-    //         throw new HttpResponseException(
-    //             response()->json( $response, 422 )
-    //         );
-    //     }
-    // }
+            throw new HttpResponseException(
+                response()->json( $response, 422 )
+            );
+        }
+    }
 }
