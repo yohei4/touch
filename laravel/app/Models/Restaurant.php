@@ -11,15 +11,15 @@ class Restaurant extends Model
     protected $fillable =
     [
         'id',
-        'name',
-        'post_code',
+        'restaurant_name',
+        'postal_code',
         'address_1',
         'address_2',
         'address_3',
-        'address_4',
         'tel',
-        'table_count',
-        'comment',
+        'logo',
+        // 'table_count',
+        // 'comment',
     ];
 
     /**
@@ -37,6 +37,6 @@ class Restaurant extends Model
      */
     public function getAddress()
     {
-        return $this->attributes['address_1'] . $this->attributes['address_2'] . $this->attributes['address_3'] . $this->attributes['address_4'];
+        return $this->attributes['address_1'] . $this->attributes['address_2'] . $this->attributes['address_3'];
     }
 }

@@ -45,12 +45,12 @@ class User extends Authenticatable
     ];
 
     /**
-     * お店IDを取得
+     * 店舗IDを取得
      *
      * @return string $restaurant_id
      */
-    public static function getRestaurantId($id) {
-        $restaurant_id = User::select('restaurant_id')->where('id', $id)->first();
+    public static function getRestaurantId() {
+        $restaurant_id = auth()->user()->restaurant_id;
         return $restaurant_id;
     }
 

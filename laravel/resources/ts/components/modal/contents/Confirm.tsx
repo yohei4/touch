@@ -9,12 +9,12 @@ interface ConfilmProps {
 
 const Confirm = (props: ConfilmProps) => {
     useEffect(() => {
-        // console.log(props.formData);
+        console.log(props.formData);
     });
 
     const onclick = () => {
         const fd = new FormData();
-        setFormData(fd);
+        setFd(fd);
         axios.post('/restaurant/ajax/save', fd)
         .then(function (response) {
             console.log(response.data);
@@ -25,12 +25,12 @@ const Confirm = (props: ConfilmProps) => {
         props.next();
     };
 
-    const setFormData = (fd: FormData) => {
-        fd.append('name', props.formData.name);
-        fd.append('pCode', props.formData.pCode);
-        fd.append('add1', props.formData.add1);
-        fd.append('add2', props.formData.add2);
-        fd.append('add3', props.formData.add3);
+    const setFd = (fd: FormData) => {
+        fd.append('restaurant_name', props.formData.name);
+        fd.append('postal_code', props.formData.pCode);
+        fd.append('address_1', props.formData.add1);
+        fd.append('address_2', props.formData.add2);
+        fd.append('address_3', props.formData.add3);
         fd.append('tel', props.formData.tel);
         fd.append('logo', props.formData.logo);
     }
@@ -44,6 +44,11 @@ const Confirm = (props: ConfilmProps) => {
                 id={'name'}
                 label={'店舗名'}
                 inputData={props.formData.name}
+            />
+            <ConfilmItem
+                id={'pCode'}
+                label={'郵便番号'}
+                inputData={props.formData.pCode}
             />
             <ConfilmItem
                 id={'add1'}

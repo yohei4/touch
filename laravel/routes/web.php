@@ -28,6 +28,7 @@ Route::get('/', 'MainController@index')->name('top_page');
 * 店舗情報登録
 */
 Route::post('/restaurant/ajax/save', 'RestaurantController@save')->name('restaurantAjaxSave');
+Route::post('/restaurant/ajax/validation1', 'Ajax\ModalController@ajaxCheck')->name('ajaxValidation');
 
 /**
  * サイドメニュー
