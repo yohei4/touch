@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { createRef, useEffect } from "react";
-import {Button, Input, Title, Select } from './index';
+import {Button, Input, Title } from './index';
+
+import UIkit from 'uikit';
 
 interface Form1Props {
     formData: any;
@@ -10,33 +12,54 @@ interface Form1Props {
 }
 
 const Form1 = (props: Form1Props) => {
+
     useEffect(() => {
         props.setId('form1');
     });
 
-    const refName = createRef<HTMLInputElement>();
-    const refPCode = createRef<HTMLInputElement>();
-    const refAdd1 = createRef<HTMLInputElement>();
-    const refAdd2 = createRef<HTMLInputElement>();
-    const refAdd3 = createRef<HTMLInputElement>();
-    const refTel = createRef<HTMLInputElement>();
+    const aryref: any = {
+        restaurant_name: createRef<HTMLInputElement>(),
+        postal_code: createRef<HTMLInputElement>(),
+        address_1: createRef<HTMLInputElement>(),
+        address_2: createRef<HTMLInputElement>(),
+        address_3: createRef<HTMLInputElement>(),
+        tel: createRef<HTMLInputElement>()
+    }
 
     const onClick = () => {
         const fd = new FormData();
         setFd(fd);
         axios.post('/restaurant/ajax/validation1', fd)
         .then(response => {
-            console.log(response);
-            props.setFormData({
-                ...props.formData,
-                name: response.data.restaurant_name,
-                pCode: response.data.postal_code,
-                add1: response.data.address_1,
-                add2: response.data.address_2,
-                add3: response.data.address_3,
-                tel: response.data.tel,
-            });
-            props.next();
+            const data = response.data.data;
+            const errors = response.data.errors;
+            const status = response.data.status;
+            console.log(data);
+            if(status == 'error') {
+                let error = '';
+                Object.keys(errors).forEach(key => {
+                    error += errors[key][0] + '<br>';
+                });
+            } else {
+                // Object.keys(data).forEach(key => {
+                //     console.log(key);
+                //     props.setFormData({
+                //         ...props.formData,
+                //         [key]: data[key]
+                //     });
+                //     console.log(data[key]);
+                // });
+                props.setFormData({
+                    ...props.formData,
+                    restaurant_name: data['restaurant_name'],
+                    postal_code: data['postal_code'],
+                    address_1: data['address_1'],
+                    address_2: data['address_2'],
+                    address_3: data['address_3'],
+                    tel: data['tel'],
+                });
+                props.next();
+            }
         })
         .catch(error => {
             console.log(error.response.data.errors);
@@ -44,13 +67,10 @@ const Form1 = (props: Form1Props) => {
     };
 
     const setFd = (fd: FormData) => {
-        fd.append('restaurant_name', refName.current.value);
-        fd.append('postal_code', refPCode.current.value);
-        fd.append('address_1', refAdd1.current.value);
-        fd.append('address_2', refAdd2.current.value);
-        fd.append('address_3', refAdd3.current.value);
-        fd.append('tel', refTel.current.value);
-    };
+        Object.keys(aryref).forEach(key => {
+            fd.append(key, aryref[key].current.value)
+        });
+    }
 
     return (
         <React.Fragment>
@@ -63,7 +83,7 @@ const Form1 = (props: Form1Props) => {
                         name={'name'}
                         txt={'店舗名'}
                         type={'text'}
-                        ref={refName}
+                        ref={aryref.restaurant_name}
                         required={true}
                     />
                 </div>
@@ -72,28 +92,28 @@ const Form1 = (props: Form1Props) => {
                         name={'pCode'}
                         txt={'郵便番号'}
                         type={'text'}
-                        ref={refPCode}
+                        ref={aryref.postal_code}
                         required={true}
                     />
                     <Input
                         name={'add1'}
                         txt={'都道府県・市区町村'}
                         type={'text'}
-                        ref={refAdd1}
+                        ref={aryref.address_1}
                         required={true}
                     />
                     <Input
                         name={'add2'}
                         txt={'番地'}
                         type={'text'}
-                        ref={refAdd2}
+                        ref={aryref.address_2}
                         required={true}
                     />
                     <Input
                         name={'add3'}
                         txt={'建物名・部屋番号'}
                         type={'text'}
-                        ref={refAdd3}
+                        ref={aryref.address_3}
                     />
                 </div>
                 <div className="form-item__outer">
@@ -101,7 +121,7 @@ const Form1 = (props: Form1Props) => {
                         name={'tel'}
                         txt={'電話番号'}
                         type={'tel'}
-                        ref={refTel}
+                        ref={aryref.tel}
                         required={true}
                     />
                 </div>

@@ -19,8 +19,8 @@ class ModalController extends Controller
         if ($validator->fails()) {
             return ['status' => 'error', 'errors' => $validator->messages()];
         }
-        // $request->validate($this->__form1rules());
-        // return $request->all();
+
+        return ['status' => 'success', 'data' => $data];
     }
 
 

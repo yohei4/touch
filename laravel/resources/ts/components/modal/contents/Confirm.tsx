@@ -25,14 +25,11 @@ const Confirm = (props: ConfilmProps) => {
         props.next();
     };
 
-    const setFd = (fd: FormData) => {
-        fd.append('restaurant_name', props.formData.name);
-        fd.append('postal_code', props.formData.pCode);
-        fd.append('address_1', props.formData.add1);
-        fd.append('address_2', props.formData.add2);
-        fd.append('address_3', props.formData.add3);
-        fd.append('tel', props.formData.tel);
-        fd.append('logo', props.formData.logo);
+    const setFd = (fd: FormData): void => {
+        console.log(props.formData);
+        Object.keys(props.formData).forEach(key => {
+            fd.append(key, props.formData[key]);
+        });
     }
 
     return (
@@ -43,22 +40,22 @@ const Confirm = (props: ConfilmProps) => {
             <ConfilmItem
                 id={'name'}
                 label={'店舗名'}
-                inputData={props.formData.name}
+                inputData={props.formData.restaurant_name}
             />
             <ConfilmItem
                 id={'pCode'}
                 label={'郵便番号'}
-                inputData={props.formData.pCode}
+                inputData={props.formData.postal_code}
             />
             <ConfilmItem
                 id={'add1'}
                 label={'住所'}
-                inputData={props.formData.add1 + props.formData.add2}
+                inputData={props.formData.address_1 + props.formData.address_2}
             />
             <ConfilmItem
                 id={'add2'}
                 label={'建物名・部屋番号'}
-                inputData={props.formData.add3}
+                inputData={props.formData.address_3}
             />
             <ConfilmItem
                 id={'tel'}

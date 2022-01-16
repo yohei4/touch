@@ -5,6 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Rules\PostalCodeRule;
+use App\Rules\TelRule;
 
 class RestaurantRequest extends FormRequest
 {
@@ -27,25 +29,25 @@ class RestaurantRequest extends FormRequest
     {
         return [
             'restaurant_name' => 'required',
-            'postal_code' => 'required|max:8',
+            'postal_code' => ['required', new PostalCodeRule],
             'address_1' => 'required|max:26',
             'address_2' => 'required|max:32',
             'address_3' => 'nullable|max:32',
-            'tel' => 'required|max:11',
-            'logo' => 'nullable|image|max:10000',
+            'tel' => ['required', new TelRule],
+            'logo' => 'nullable|image|max:20000',
             'table_count' => 'nullable',
             'comment' => 'nullable|max:500',
         ];
     }
 
-    protected function failedValidation(Validator $validator)
-    {
-        if (request()->expectsJson()) {
-            $response['errors'] = $validator->errors()->toArray();
+    // protected function failedValidation(Validator $validator)
+    // {
+    //     if (request()->expectsJson()) {
+    //         $response['errors'] = $validator->errors()->toArray();
 
-            throw new HttpResponseException(
-                response()->json( $response, 422 )
-            );
-        }
-    }
+    //         throw new HttpResponseException(
+    //             response()->json( $response, 422 )
+    //         );
+    //     }
+    // }
 }

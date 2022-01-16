@@ -25,11 +25,13 @@
 </head>
 
 <body>
+@if (!Auth::user()->restaurant_id)
     <div id="modal">
-        <div id="js-black__bg" class="bg-black"></div>
+        <div id="js-modal__bg" class="bg-black"></div>
         <!-- modal-main is react -->
         <div id="modal-main"></div>
     </div>
+@endif
     <div class="wrapper" data-barba="wrapper">
         <div id="side-menu">
            @include('app.side')

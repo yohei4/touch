@@ -6,7 +6,9 @@ interface WelcomeProps {
     onClick: () => void;
 };
 
+
 const Welcome = (props: WelcomeProps) => {
+
     useEffect(() => {
         props.setId('welcome');
     });

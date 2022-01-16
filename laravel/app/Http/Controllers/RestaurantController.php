@@ -48,7 +48,6 @@ class RestaurantController extends Controller
         return true;
     }
 
-
     public function saveLogo($file)
     {
         $id =  User::getRestaurantId();

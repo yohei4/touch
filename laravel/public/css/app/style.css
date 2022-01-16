@@ -44,7 +44,6 @@ button {
 
 #main {
   width: 100%;
-  height: 10000px;
   padding-left: 276px;
 }
 
@@ -394,8 +393,8 @@ button {
   width: 100%;
   height: 100%;
   z-index: 1000;
+  display: block;
   text-align: center;
-  display: none;
   -webkit-transition: all 2s ease;
   transition: all 2s ease;
 }
@@ -466,27 +465,6 @@ button {
   font-size: 28px;
 }
 
-.js-show__modal {
-  display: block !important;
-}
-
-.js-show__modal .bg-black {
-  -webkit-animation-name: modalBg;
-          animation-name: modalBg;
-  -webkit-animation-duration: 0.7s;
-          animation-duration: 0.7s;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
-  -webkit-animation-direction: normal;
-          animation-direction: normal;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-}
-
 .js-show__modal #modal-main {
   -webkit-animation-name: modalShow;
           animation-name: modalShow;
@@ -494,8 +472,8 @@ button {
           animation-duration: 0.82s;
   -webkit-animation-timing-function: ease;
           animation-timing-function: ease;
-  -webkit-animation-delay: 0.4s;
-          animation-delay: 0.4s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
   -webkit-animation-iteration-count: 1;
           animation-iteration-count: 1;
   -webkit-animation-direction: normal;
@@ -504,26 +482,55 @@ button {
           animation-fill-mode: forwards;
 }
 
-.js-close__modal {
-  display: none !important;
+.js-show__modal .bg-black {
+  -webkit-animation-name: modalBgView;
+          animation-name: modalBgView;
+  -webkit-animation-duration: 0.7s;
+          animation-duration: 0.7s;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
-@-webkit-keyframes modalBg {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: .6;
-  }
+.js-close__modal #modal-main {
+  -webkit-animation-name: modalClose;
+          animation-name: modalClose;
+  -webkit-animation-duration: 0.82s;
+          animation-duration: 0.82s;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
-@keyframes modalBg {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: .6;
-  }
+.js-close__modal .bg-black {
+  -webkit-animation-name: modalBgHide;
+          animation-name: modalBgHide;
+  -webkit-animation-duration: 0.7s;
+          animation-duration: 0.7s;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes modalShow {
@@ -549,6 +556,68 @@ button {
     opacity: 1;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
+  }
+}
+
+@-webkit-keyframes modalClose {
+  0% {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -100%);
+            transform: translate(-50%, -100%);
+  }
+}
+
+@keyframes modalClose {
+  0% {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -100%);
+            transform: translate(-50%, -100%);
+  }
+}
+
+@-webkit-keyframes modalBgView {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: .6;
+  }
+}
+
+@keyframes modalBgView {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: .6;
+  }
+}
+
+@-webkit-keyframes modalBgHide {
+  0% {
+    opacity: .6;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes modalBgHide {
+  0% {
+    opacity: .6;
+  }
+  100% {
+    opacity: 0;
   }
 }
 /*# sourceMappingURL=style.css.map */
