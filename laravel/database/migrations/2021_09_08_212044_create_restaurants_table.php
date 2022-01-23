@@ -15,9 +15,12 @@ class CreateRestaurantsTable extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id()->unsigned();
-            $table->string('name')->comment('店名');
-            $table->string('address_1')->comment('住所1');
-            $table->string('address_2')->nullable()->comment('住所2');
+            $table->string('restaurant_name')->comment('店名');
+            $table->string('postal_code')->comment('郵便番号');
+            $table->string('address_1')->comment('都道府県・市区町村');
+            $table->string('address_2')->comment('番地');
+            $table->string('address_3')->nullable()->comment('建物名・部屋番号');
+            $table->string('logo')->nullable()->comment('ロゴ');
             $table->string('tel')->nullable()->comment('電話番号');
             $table->integer('table_count')->nullable()->comment('テーブル数');
             $table->string('comment')->nullable()->comment('お店の説明欄');

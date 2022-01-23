@@ -2,7 +2,7 @@ interface ButtonProps {
     id: string;
     txt: string;
     type: any;
-    onClick: () => void;
+    onClick(): void;
 };
 
 const Button = (props: ButtonProps) => {

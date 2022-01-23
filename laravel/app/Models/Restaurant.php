@@ -8,20 +8,51 @@ class Restaurant extends Model
 {
     protected $table = 'restaurants';
 
-    protected $fillable =  
+    protected $fillable =
     [
         'id',
-        'name',
-        'table_count'
+        'restaurant_name',
+        'postal_code',
+        'address_1',
+        'address_2',
+        'address_3',
+        'tel',
+        'logo',
+        // 'table_count',
+        // 'comment',
     ];
 
     /**
      * テーブル数を取得
-     *
      * @return int テーブル数
      */
     public function getTableCount()
     {
-        return $this->attributes;
+        return $this->attributes['table_count'];
+    }
+
+    /**
+     * テーブル数を取得
+     * @return int テーブル数
+     */
+    public function getAddress()
+    {
+        return $this->attributes['address_1'] . $this->attributes['address_2'] . $this->attributes['address_3'];
+    }
+
+    /**
+     * 店舗名を取得
+     * @return string 店舗名
+     */
+    public static function getName()
+    {
+        $restaurant_id = null;
+        $restaurant_id = auth()->user()->restaurant_id;
+
+        if (empty($restaurant_id)) {
+            return null;
+        }
+
+        return Restaurant::where('id', auth()->user()->restaurant_id)->first()->restaurant_name;
     }
 }

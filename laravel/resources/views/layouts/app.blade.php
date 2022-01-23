@@ -25,19 +25,24 @@
 </head>
 
 <body>
+@if (!Auth::user()->restaurant_id)
     <div id="modal">
-        <div id="js-black__bg" class="bg-black"></div>
+        <div id="js-modal__bg" class="bg-black"></div>
         <!-- modal-main is react -->
         <div id="modal-main"></div>
     </div>
-    <div class="wrapper" data-barba="wrapper">
+@endif
+    <div class="wrapper">
+        <header id="header" class="header">
+            @include('app.header')
+        </header>
         <div id="side-menu">
-           @include('app.side')
+            @include('app.side_menu')
         </div>
-        <main id="main" data-barba="container" data-barba-namespace="home">
-            @yield('content')
-        </main>
     </div>
+    <main id="main" data-barba="container" data-barba-namespace="home">
+        @yield('content')
+    </main>
 
     {{-- <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
         {{ __('Logout') }}

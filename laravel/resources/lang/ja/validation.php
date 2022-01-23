@@ -93,7 +93,7 @@ return [
     'numeric'              => ':attributeには、数字を指定してください。',
     'present'              => ':attributeが存在していません。',
     'regex'                => ':attributeに正しい形式を指定してください。',
-    'required'             => ':attributeは必ず指定してください。',
+    'required'             => ':attributeは必須です。',
     'required_if'          => ':otherが:valueの場合、:attributeも指定してください。',
     'required_unless'      => ':otherが:valuesでない場合、:attributeを指定してください。',
     'required_with'        => ':valuesを指定する場合は、:attributeも指定してください。',
@@ -112,6 +112,8 @@ return [
     'unique'               => ':attributeの値は既に存在しています。',
     'uploaded'             => ':attributeのアップロードに失敗しました。',
     'url'                  => ':attributeに正しい形式を指定してください。',
+    'tel' => ':attributeはハイフン有りか無しで半角英数字8~11個の数字で入力してください。',
+    'postal_code' => ':attributeはハイフン有りか無しで半角英数字7個の数字で入力してください。',
 
     /*
     |--------------------------------------------------------------------------
@@ -141,6 +143,14 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'restaurant_name' => '店舗名',
+        'postal_code' => '郵便番号',
+        'address_1' => '都道府県・市区町村',
+        'address_2' => '番地',
+        'address_3' => '建物名・部屋番号',
+        'tel' => '電話番号',
+        'logo' => 'ロゴ'
+    ],
 
 ];

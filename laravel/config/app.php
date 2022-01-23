@@ -231,6 +231,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Restaurant' => App\Models\Restaurant::class,
         // QRコード
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         //定数

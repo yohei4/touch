@@ -1,4 +1,29 @@
+// カラー定数
+$header_bg: #ADADAD;
+$side_summary_bg: #A2A2A2;
+$btn_bg: #EBEBEB;
+$font-color: #3C3C3C;
+
+// フォントサイズ定数
+$base_font_size: 17px;
+
+// 横幅や高さの定数
+$header_height: 28px;
+$side_menu_wigth: 276px;
+
 .wrapper {
     width: 100%;
-    display: flex;
+    height: 100%;
+    position: fixed;
+}
+
+.form-required {
+    font-size: 7.5px;
+    color: white;
+    background-color: rgb(255, 65, 65);
+    padding: 2px 4px;
+    margin-left: 10px;
+    &::after {
+        content: '必須';
+    }
 }

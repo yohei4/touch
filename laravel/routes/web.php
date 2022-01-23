@@ -23,10 +23,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 */
 Route::get('/', 'MainController@index')->name('top_page');
 
+
 /**
- * サイドメニュー
- */
-// Route::get('/home')
+* 店舗情報登録(モーダル)
+*/
+Route::post('/restaurant/ajax/save', 'RestaurantController@save')->name('restaurantAjaxSave');
+Route::post('/restaurant/ajax/validation1', 'Ajax\ModalController@ajaxCheck')->name('ajaxValidation');
+
+/**
+* 店舗情報
+*/
+Route::get('/info/shop-information', 'ShopInformationController@index')->name('shop_information');
+
 /**
 * QRコードページ
 */

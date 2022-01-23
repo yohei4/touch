@@ -15,7 +15,7 @@ class User extends Authenticatable
 
     protected $primaryKey = 'id';
 
-    public $incrementing = false;
+    // public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -45,13 +45,11 @@ class User extends Authenticatable
     ];
 
     /**
-     * お店IDを取得
-     *
-     * @return string $restaurant_id
+     * 店舗IDを取得
+     * @return string restaurant_id
      */
-    public static function getRestaurantId($id) {
-        $restaurant_id = User::select('restaurant_id')->where('id', $id)->first();
-        return $restaurant_id;
+    public static function getRestaurantId() {
+        return User::where('id', auth()->user()->id)->restaurant_id;
     }
 
     // /**

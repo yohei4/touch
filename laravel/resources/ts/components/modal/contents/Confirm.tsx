@@ -1,8 +1,10 @@
+import axios from "axios";
 import React, { useEffect } from "react";
-import {Button} from './index';
+import { Button, Title, ConfilmItem, Preview } from './index';
 
 interface ConfilmProps {
-    formData: object
+    formData: any;
+    next(): void;
 };
 
 const Confirm = (props: ConfilmProps) => {
@@ -10,15 +12,63 @@ const Confirm = (props: ConfilmProps) => {
         console.log(props.formData);
     });
 
+    const onclick = () => {
+        const fd = new FormData();
+        setFd(fd);
+        axios.post('/restaurant/ajax/save', fd)
+        .then(function (response) {
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log(error.response);
+        })
+        props.next();
+    };
+
+    const setFd = (fd: FormData): void => {
+        console.log(props.formData);
+        Object.keys(props.formData).forEach(key => {
+            fd.append(key, props.formData[key]);
+        });
+    }
+
     return (
         <React.Fragment>
-            <h1 className="modal-logo"><img src={'images/logo.png'} alt="アプリのロゴ"/></h1>
-            <h2 className="modal-head">Touchへようこそ(4)</h2>
-            <p className="modal-txt">在庫管理、帳票作成、お店のメニューのカスタマイズを一つのアプリで</p>
+            <Title
+                txt={'以下の内容で登録してもよろしいでしょうか？'}
+            />
+            <ConfilmItem
+                id={'name'}
+                label={'店舗名'}
+                inputData={props.formData.restaurant_name}
+            />
+            <ConfilmItem
+                id={'pCode'}
+                label={'郵便番号'}
+                inputData={props.formData.postal_code}
+            />
+            <ConfilmItem
+                id={'add1'}
+                label={'住所'}
+                inputData={props.formData.address_1 + props.formData.address_2}
+            />
+            <ConfilmItem
+                id={'add2'}
+                label={'建物名・部屋番号'}
+                inputData={props.formData.address_3}
+            />
+            <ConfilmItem
+                id={'tel'}
+                label={'電話番号'}
+                inputData={props.formData.tel}
+            />
+            {/* <Preview
+                logo={props.formData.logo}
+            /> */}
             <Button
                 id={'js-modal_next'}
                 txt={'次へ'}
-                onClick={() => console.log("clicked")}
+                onClick={() => onclick()}
                 type={'submit'}
             />
         </React.Fragment>
