@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
-    //
     public function save(RestaurantRequest $request)
     {
         $user = null;
@@ -33,6 +32,11 @@ class RestaurantController extends Controller
             $user->restaurant_id = $restaurant_id;
             $user->save();
 
+            //画像の保存
+            if (!empty($file)) {
+                $this->saveLogo($file, $restaurant_id);
+            }
+
             // コミット
             DB::commit();
         } catch (\Throwable $e) {
@@ -40,36 +44,22 @@ class RestaurantController extends Controller
             abort(500);
         }
 
-        //画像の保存
-        if (!empty($file)) {
-            $this->saveLogo($file);
-        }
 
         return true;
     }
 
-    public function saveLogo($file)
+    public function saveLogo($file, $restaurant_id)
     {
-        $id =  User::getRestaurantId();
+        // 画像をstorageに保存
         $path = $file->storeAs(
-            'images/' . $id,
+            'images/' . $restaurant_id,
             'logo.' . $file->extension(),
             'public'
         );
 
-        // データベース接続
-        DB::beginTransaction();
-        try {
-            // 店舗テーブルにpathを保存
-            $target = Restaurant::find($id);
-            $target->logo = $path;
-            $target->save();
-
-            // コミット
-            DB::commit();
-        } catch (\Throwable $e) {
-            DB::rollback();
-            abort(500);
-        }
+        // 店舗テーブルにpathを保存
+        $target = Restaurant::find($restaurant_id);
+        $target->logo = $path;
+        $target->save();
     }
 }

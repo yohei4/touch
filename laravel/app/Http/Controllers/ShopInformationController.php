@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Restaurant;
+use Illuminate\Support\Facades\Auth;
 
 class ShopInformationController extends Controller
 {
@@ -12,16 +14,14 @@ class ShopInformationController extends Controller
     */
     public function index()
     {
-        //複合主キーから店のIDを取得
-        $primarykey = Auth::id();
-        $restaurant_id = explode('|', $primarykey, 2)[0];
+        $restaurant_id = Auth::user()->restaurant_id;
 
-        // 商品情報をデータベースから所得
-        $orders = Order::where('restaurant_id', $restaurant_id)->get();
-        $products = Food::where('restaurant_id', $restaurant_id)->get();
+        // 店舗情報をデータベースから所得
+        $restaurant = Restaurant::where('id', $restaurant_id)->first();
+
         return view(
-            'management_page',
-            ['orders' => $orders,'products' => $products]
+            'app.shop_information',
+            compact('restaurant')
         );
     }
 }

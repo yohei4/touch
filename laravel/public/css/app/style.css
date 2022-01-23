@@ -12,7 +12,7 @@ li {
   list-style: none;
 }
 
-menu, nav, ul {
+p, menu, nav, ul {
   padding: 0;
   margin: 0;
 }
@@ -25,9 +25,8 @@ button {
 
 .wrapper {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  height: 100%;
+  position: fixed;
 }
 
 .form-required {
@@ -44,6 +43,7 @@ button {
 
 #main {
   width: 100%;
+  padding-top: 28px;
   padding-left: 276px;
 }
 
@@ -51,32 +51,62 @@ button {
   font-size: 2.5em;
 }
 
+#header {
+  width: 100vw;
+  height: 28px;
+  background: #ADADAD;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 15px;
+  color: white;
+  font-size: 15px;
+}
+
+#header > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#header > div .header-shop__txt {
+  font-weight: bold;
+}
+
+#header > div .header-user {
+  background: #EBEBEB;
+  padding: 1.7px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#header > div .header-user i {
+  color: #3C3C3C;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+#header > div .header-user__txt {
+  color: #3C3C3C;
+  font-size: 12px;
+}
+
 #side-menu {
   width: 276px;
-  height: 100vh;
+  height: 100%;
   background: #D1D1D1;
   overflow-y: hidden;
-  position: fixed;
   top: 0;
-}
-
-#side-menu .header {
-  height: 55px;
-  padding-left: 15px;
-}
-
-#side-menu .header-shop {
-  position: relative;
-  height: 100%;
-}
-
-#side-menu .header-shop__txt {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
-  font-size: 23px;
 }
 
 #side-menu .gb-menu {

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'ホーム画面')
+@section('title', '店舗情報')
 @section('content')
     <div class="main-inner">
         店舗情報

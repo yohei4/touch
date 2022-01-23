@@ -39,4 +39,20 @@ class Restaurant extends Model
     {
         return $this->attributes['address_1'] . $this->attributes['address_2'] . $this->attributes['address_3'];
     }
+
+    /**
+     * 店舗名を取得
+     * @return string 店舗名
+     */
+    public static function getName()
+    {
+        $restaurant_id = null;
+        $restaurant_id = auth()->user()->restaurant_id;
+
+        if (empty($restaurant_id)) {
+            return null;
+        }
+
+        return Restaurant::where('id', auth()->user()->restaurant_id)->first()->restaurant_name;
+    }
 }

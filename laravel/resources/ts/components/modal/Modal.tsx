@@ -18,8 +18,11 @@ function Modal(props: ModalProps) {
                 modalOpen(parentEl);
             } else {
                 modalClose(parentEl);
+
             }
         }, 400);
+
+        // if (!modalIsOpen) ;
 
         // アンマウント
         return () => clearInterval(timeout);
@@ -33,6 +36,9 @@ function Modal(props: ModalProps) {
     const modalClose = (el: any):void => {
         el.classList.add('js-close__modal');
         el.classList.remove('js-show__modal');
+        setTimeout(() => {
+            el.style.display = 'none';
+        }, 400);
     }
 
     return (
