@@ -34,13 +34,14 @@
 @endif
     <div class="wrapper">
         <header id="header" class="header">
-            @include('app.header')
+            @include('layouts.header')
         </header>
         <div id="side-menu">
-            @include('app.side_menu')
+            @include('layouts.side_menu')
         </div>
     </div>
     <main id="main" data-barba="container" data-barba-namespace="home">
+        @include('app.components.header')
         @yield('content')
     </main>
 

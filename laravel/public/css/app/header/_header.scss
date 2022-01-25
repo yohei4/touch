@@ -21,12 +21,12 @@
             display: flex;
             align-items: center;
             & i {
-                color: $font-color;
+                color: $font_color;
                 font-size: 16px;
                 margin-right: 5px;
             }
             &__txt {
-                color: $font-color;
+                color: $font_color;
                 font-size: ($base_font_size - 5px);
             }
         }

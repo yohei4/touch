@@ -1,8 +1,10 @@
 // カラー定数
 $header_bg: #ADADAD;
+$body_bg: #E6E6E6;
 $side_summary_bg: #A2A2A2;
 $btn_bg: #EBEBEB;
-$font-color: #3C3C3C;
+$font_color: #3C3C3C;
+$inputbColor: #bbbbbb;
 
 // フォントサイズ定数
 $base_font_size: 17px;
@@ -10,6 +12,10 @@ $base_font_size: 17px;
 // 横幅や高さの定数
 $header_height: 28px;
 $side_menu_wigth: 276px;
+
+body {
+    background: $body_bg;
+}
 
 .wrapper {
     width: 100%;
