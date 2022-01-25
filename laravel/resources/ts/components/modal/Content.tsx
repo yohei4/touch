@@ -19,6 +19,7 @@ const Content = (props: ContentProps) => {
         address_1: "",
         address_2: "",
         address_3: "",
+        address_4: "",
         tel: "",
         logo: {} as object
     });

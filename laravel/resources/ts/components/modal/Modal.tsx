@@ -42,11 +42,13 @@ function Modal(props: ModalProps) {
     }
 
     return (
+        <React.StrictMode>
         <div className="modal-content" ref={modal}>
             <Content
                 setIsOpen={setIsOpen}
             />
         </div>
+        </React.StrictMode>
     )
 };
 

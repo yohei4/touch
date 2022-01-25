@@ -16,6 +16,7 @@ class Restaurant extends Model
         'address_1',
         'address_2',
         'address_3',
+        'address_4',
         'tel',
         'logo',
         // 'table_count',
@@ -32,12 +33,12 @@ class Restaurant extends Model
     }
 
     /**
-     * テーブル数を取得
+     * 住所を取得
      * @return int テーブル数
      */
     public function getAddress()
     {
-        return $this->attributes['address_1'] . $this->attributes['address_2'] . $this->attributes['address_3'];
+        return $this->attributes['address_1'] . $this->attributes['address_2'] . $this->attributes['address_3'] . $this->attributes['address_4'];
     }
 
     /**

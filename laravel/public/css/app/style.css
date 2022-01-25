@@ -23,6 +23,10 @@ button {
   margin: 0;
 }
 
+body {
+  background: #E6E6E6;
+}
+
 .wrapper {
   width: 100%;
   height: 100%;
@@ -218,7 +222,7 @@ button {
 }
 
 #welcome .modal-logo {
-  margin: 0 auto;
+  margin: 33px auto 0;
   width: 150px;
 }
 
@@ -227,13 +231,13 @@ button {
 }
 
 #welcome .modal-head {
-  font-size: 35px;
+  font-size: 40px;
   font-weight: 200;
   margin: 30px 0 0;
 }
 
 #welcome .modal-txt {
-  margin: 5px 0 0;
+  margin: 10px 0 0;
   font-size: 21px;
 }
 
@@ -292,7 +296,7 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0 auto 7.5px;
+  margin: 60px auto 7.5px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -447,8 +451,8 @@ button {
           transform: translate(-50%, -100%);
   background: #fff;
   border-radius: 5px;
-  width: 60%;
-  height: 65%;
+  width: 68%;
+  height: 75%;
   opacity: 0;
 }
 
@@ -462,7 +466,7 @@ button {
   border: none;
   background-color: inherit;
   width: 100%;
-  height: 65%;
+  height: 70%;
 }
 
 .modal-content .modal-content__inner {
