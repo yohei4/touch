@@ -45,12 +45,6 @@ body {
   content: '必須';
 }
 
-#main {
-  width: 100%;
-  padding-top: 28px;
-  padding-left: 276px;
-}
-
 .fas, .fab {
   font-size: 2.5em;
 }
@@ -653,5 +647,36 @@ body {
   100% {
     opacity: 0;
   }
+}
+
+#main {
+  width: 100%;
+  padding-top: 28px;
+  padding-left: 276px;
+}
+
+.main-container {
+  margin: 10px 32px;
+}
+
+.main-header .header-title {
+  margin-top: 27px;
+}
+
+.main-header .header-title__txt {
+  font-size: 37px;
+  font-weight: bold;
+}
+
+#breadcrumb .breadcrumb {
+  margin: 0;
+}
+
+#breadcrumb .breadcrumb-item {
+  font-size: 16px;
+}
+
+#breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  content: var(--bs-breadcrumb-divider, ">");
 }
 /*# sourceMappingURL=style.css.map */
