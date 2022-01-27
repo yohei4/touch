@@ -32,13 +32,11 @@
         <div id="modal-main"></div>
     </div>
 @endif
-    <div class="wrapper">
-        <header id="header" class="header">
-            @include('layouts.header')
-        </header>
-        <div id="side-menu">
-            @include('layouts.side_menu')
-        </div>
+    <header id="header" class="header">
+        @include('layouts.header')
+    </header>
+    <div id="side-menu">
+        @include('layouts.side_menu')
     </div>
     <main id="main" data-barba="container" data-barba-namespace="home">
         <div class="main-container">

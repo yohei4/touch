@@ -36,6 +36,7 @@ Route::post('/restaurant/ajax/validation1', 'Ajax\ModalController@ajaxCheck')->n
 * 店舗情報
 */
 Route::get('/info/restaurant-information', 'RestaurantInformationController@index')->name('restaurant_information');
+Route::post('/info/restaurant-information/update', 'RestaurantInformationController@update')->name('restaurant_information/update');
 
 /**
 * QRコードページ

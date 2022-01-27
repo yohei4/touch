@@ -23,6 +23,10 @@ button {
   margin: 0;
 }
 
+html {
+  overscroll-behavior: none;
+}
+
 body {
   background: #E6E6E6;
 }
@@ -38,11 +42,16 @@ body {
   color: white;
   background-color: #ff4141;
   padding: 2px 4px;
-  margin-left: 10px;
+  margin-left: 1px;
 }
 
 .form-required::after {
   content: '必須';
+}
+
+.ajaxzip3 {
+  padding: 3px 15px;
+  border: 1px solid #707070;
 }
 
 .fas, .fab {
@@ -50,7 +59,7 @@ body {
 }
 
 #header {
-  width: 100vw;
+  width: 100%;
   height: 28px;
   background: #ADADAD;
   display: -webkit-box;
@@ -62,6 +71,7 @@ body {
   padding: 0 15px;
   color: white;
   font-size: 15px;
+  position: fixed;
 }
 
 #header > div {
@@ -101,10 +111,11 @@ body {
 
 #side-menu {
   width: 276px;
-  height: 100%;
+  height: calc(100% - $header_height);
   background: #D1D1D1;
   overflow-y: hidden;
-  top: 0;
+  position: fixed;
+  top: 28px;
 }
 
 #side-menu .gb-menu {
@@ -678,5 +689,56 @@ body {
 
 #breadcrumb .breadcrumb-item + .breadcrumb-item::before {
   content: var(--bs-breadcrumb-divider, ">");
+}
+
+.form-outer {
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+#restaurant-information .form-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#restaurant-information .form-item:not(:last-child) {
+  margin-bottom: 38px;
+}
+
+#restaurant-information .form-item:nth-of-type(2) .form-input {
+  margin-right: 40px;
+}
+
+#restaurant-information .form-item:nth-of-type(8) {
+  -webkit-box-align: inherit;
+      -ms-flex-align: inherit;
+          align-items: inherit;
+}
+
+#restaurant-information .form-item:nth-of-type(8) .form-label__outer {
+  padding-top: 5px;
+}
+
+#restaurant-information .form-label__outer {
+  width: 20%;
+}
+
+#restaurant-information .form-label__outer .form-label {
+  margin: 0;
+  font-weight: bold;
+}
+
+#restaurant-information .form-control {
+  width: 30%;
+}
+
+#restaurant-information .form-btn {
+  border: 1px solid #707070;
+  padding: 8px 20px;
+  letter-spacing: 3px;
 }
 /*# sourceMappingURL=style.css.map */

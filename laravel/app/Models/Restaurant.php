@@ -19,8 +19,8 @@ class Restaurant extends Model
         'address_4',
         'tel',
         'logo',
-        // 'table_count',
-        // 'comment',
+        'table_count',
+        'comment',
     ];
 
     /**
@@ -55,5 +55,23 @@ class Restaurant extends Model
         }
 
         return Restaurant::where('id', auth()->user()->restaurant_id)->first()->restaurant_name;
+    }
+
+    /**
+     * 店舗名を取得
+     * @return string 店舗名
+     */
+    public static function getMyData()
+    {
+        // ログイン中のユーザーから店舗idを取得
+        $restaurant_id = auth()->user()->restaurant_id;
+
+        // 店舗情報をデータベースから所得
+
+        if (empty($restaurant_id)) {
+            return null;
+        }
+
+        return Restaurant::where('id', $restaurant_id)->first();
     }
 }
