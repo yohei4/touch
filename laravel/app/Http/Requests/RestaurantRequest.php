@@ -39,15 +39,4 @@ class RestaurantRequest extends FormRequest
             'comment' => 'nullable|max:500',
         ];
     }
-
-    // protected function failedValidation(Validator $validator)
-    // {
-    //     if (request()->expectsJson()) {
-    //         $response['errors'] = $validator->errors()->toArray();
-
-    //         throw new HttpResponseException(
-    //             response()->json( $response, 422 )
-    //         );
-    //     }
-    // }
 }

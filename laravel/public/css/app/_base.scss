@@ -13,6 +13,11 @@ $base_font_size: 17px;
 $header_height: 28px;
 $side_menu_wigth: 276px;
 
+html {
+    // ビヨヨン効果を無効化する
+    overscroll-behavior: none;
+}
+
 body {
     background: $body_bg;
 }
@@ -28,8 +33,13 @@ body {
     color: white;
     background-color: rgb(255, 65, 65);
     padding: 2px 4px;
-    margin-left: 10px;
+    margin-left: 1px;
     &::after {
         content: '必須';
     }
+}
+
+.ajaxzip3 {
+    padding: 3px 15px;
+    border: 1px solid #707070;
 }

@@ -1,9 +1,10 @@
 #side-menu {
     width: $side_menu_wigth;
-    height: 100%;
+    height: calc(100% - $header_height);
     background: #D1D1D1;
     overflow-y: hidden;
-    top: 0;
+    position: fixed;
+    top: $header_height;
     & .gb-menu {
         width: 100%;
         height: 100vh;
