@@ -41,8 +41,12 @@
         </div>
     </div>
     <main id="main" data-barba="container" data-barba-namespace="home">
-        @include('app.components.header')
-        @yield('content')
+        <div class="main-container">
+            @include('app.components.header')
+            <div class="main-content">
+                @yield('content')
+            </div>
+        </div>
     </main>
 
     {{-- <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

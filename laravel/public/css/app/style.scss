@@ -1,8 +1,9 @@
 @import "./reset";
 @import "./mixin";
 @import "./base";
-@import "./main";
 @import "./customFontAwesome";
 @import "./header/header";
 @import "./side_menu/menu";
 @import "./modal/modal";
+@import "./main/base";
+@import "./main/header";
