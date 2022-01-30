@@ -9,7 +9,7 @@
                     <label class="form-label" for="restaurant_name">店舗名</label>
                     <span class="form-required"></span>
                 </div>
-                <input class="form-input form-control" type="text" name="restaurnt_name" id="restaurant_name" value="{{ $restaurant->restaurant_name }}" placeholder="店舗名"/>
+                <input class="form-input form-control" type="text" name="restaurant_name" id="restaurant_name" value="{{ $restaurant->restaurant_name }}" placeholder="店舗名"/>
             </div>
 
             <div class="form-item">
@@ -18,7 +18,7 @@
                     <span class="form-required"></span>
                 </div>
                 <input class="form-input form-control" type="text" name="postal_code" id="postal_code" value="{{ $restaurant->postal_code }}" placeholder="郵便番号"/>
-                <button class="ajaxzip3">郵便番号から住所取得</button>
+                <button class="ajaxzip3" type="button">郵便番号から住所取得</button>
             </div>
 
             <div class="form-item">
@@ -80,6 +80,37 @@
                 </div>
                 <input class="form-input form-control" type="text" name="table_count" id="table_count" value="{{ $restaurant->table_count }}" placeholder="テーブル数"/>
             </div>
+
+            <div class="form-item">
+                <div class="form-label__outer">
+                    <label class="form-label" for="table_count">ロゴ写真</label>
+                </div>
+                <div class="file-item">
+                    <div class="form-file">
+                        <div class="form-file__inner">
+                            <button type="button" class="clear-btn"></button>
+                            <span class="form-file__name">選択されていません。</span>
+                        </div>
+                        <label class="form-file__label" for="logo">
+                            <button type="button" class="browse-btn"><i class="fas fa-folder"></i></button>
+                            {{-- <input id="logo" class="modal-form__input d-none" multiple/> --}}
+                            <input id="logo" name="logo" class="form-input" type='file' multiple/>
+                        </label>
+                    </div>
+                    <div class="preview-outer">
+                        <canvas id="preview"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            {{-- <div class="form-item">
+                <div class="form-label__outer">
+                    <label class="form-label" for="table_count">ロゴ写真</label>
+                </div>
+                <div class="react-form__file">
+
+                </div>
+            </div> --}}
 
             <div class="form-item">
                 <button class="form-btn" type="submit">変更を更新</button>

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Restaurant extends Model
 {
@@ -47,7 +48,6 @@ class Restaurant extends Model
      */
     public static function getName()
     {
-        $restaurant_id = null;
         $restaurant_id = auth()->user()->restaurant_id;
 
         if (empty($restaurant_id)) {
@@ -73,5 +73,23 @@ class Restaurant extends Model
         }
 
         return Restaurant::where('id', $restaurant_id)->first();
+    }
+
+    /**
+     * ロゴのURLを取得
+     * @return string logo
+     */
+    public static function getLogo()
+    {
+        // ログイン中のユーザーから店舗idを取得
+        $restaurant_id = Auth::user()->restaurant_id;
+
+        // 店舗情報をデータベースから所得
+
+        if (empty($restaurant_id)) {
+            return null;
+        }
+
+        return Restaurant::where('id', $restaurant_id)->first()->logo;
     }
 }

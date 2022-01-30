@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, forwardRef } from "react";
+import ReactDOM from 'react-dom';
 
 interface InputFileProps {
     name: string;
@@ -70,12 +71,12 @@ const InputFile = forwardRef((props: InputFileProps, ref: any) => {
 
     return (
         <React.Fragment>
-            <div className="modal-form__item">
-                <div className="modal-form__fname">
+            <div className="form-file">
+                <div className="form-file__inner">
                     <button type="button" className="clear-btn" ref={clearBtn} onClick={e => clearBtnClick(e)}></button>
                     <span className="form-file__name">{fileName}</span>
                 </div>
-                <label className="modal-form__label" htmlFor={props.name}>
+                <label className="form-file__label" htmlFor={props.name}>
                     <button type="button" className="browse-btn" onClick={() => browseBtnClick()}><i className="fas fa-folder"></i></button>
                     <input id={props.name} className="modal-form__input d-none" ref={ref} onChange={e => selectFile(e)} type='file' name={props.name} multiple/>
                 </label>

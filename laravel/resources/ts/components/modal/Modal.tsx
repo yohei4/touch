@@ -22,8 +22,6 @@ function Modal(props: ModalProps) {
             }
         }, 400);
 
-        // if (!modalIsOpen) ;
-
         // アンマウント
         return () => clearInterval(timeout);
 
