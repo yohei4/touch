@@ -13,9 +13,9 @@ interface Form1Props {
 
 const Form1 = (props: Form1Props) => {
 
-    useMemo(() => {
+    useEffect(() => {
         props.setId('form1');
-    },[]);
+    });
 
     const aryref: any = {
         restaurant_name: createRef<HTMLInputElement>(),

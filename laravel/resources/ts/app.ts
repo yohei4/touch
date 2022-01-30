@@ -13,3 +13,4 @@ require('./bootstrap');
  */
 
 require('./components/modal/Modal.tsx');
+require('./components/form/RestaurantForm');

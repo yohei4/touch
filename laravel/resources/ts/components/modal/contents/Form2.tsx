@@ -29,10 +29,12 @@ const Form2 = (props: Form2Props) => {
                 txt={'店舗ロゴマークを設定してください。'}
             />
             <p>※後で設定することも可能です。</p>
-            <InputFile
-                name={'logo'}
-                ref={refLogo}
-            />
+            <div className="form-item">
+                <InputFile
+                    name={'logo'}
+                    ref={refLogo}
+                />
+            </div>
             <Button
                 id={'js-modal_next'}
                 txt={'次へ'}

@@ -21,6 +21,12 @@
                 padding-top: 5px;
             }
         }
+        &:nth-last-of-type(2) {
+            align-items: inherit;
+            & .form-label__outer {
+                padding-top: 5px;
+            }
+        }
     }
 
     & .form-label__outer {
@@ -32,6 +38,14 @@
     }
 
     & .form-control {
+        width: 30%;
+    }
+
+    & .react-form__file {
+        width: 30%;
+    }
+
+    & .file-item {
         width: 30%;
     }
 

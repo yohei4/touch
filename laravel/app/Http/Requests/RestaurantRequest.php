@@ -30,11 +30,12 @@ class RestaurantRequest extends FormRequest
         return [
             'restaurant_name' => 'required',
             'postal_code' => ['required', new PostalCodeRule],
-            'address_1' => 'required|max:26',
-            'address_2' => 'required|max:32',
-            'address_3' => 'nullable|max:32',
+            'address_1' => 'required|max:4',
+            'address_2' => 'required|max:16',
+            'address_3' => 'required|max:32',
+            'address_4' => 'nullable|max:32',
             'tel' => ['required', new TelRule],
-            'logo' => 'nullable|image|max:20000',
+            'logo' => 'nullable',
             'table_count' => 'nullable',
             'comment' => 'nullable|max:500',
         ];
