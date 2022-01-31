@@ -1,0 +1,24 @@
+.main-header {
+    .header-title {
+        margin-top: 27px;
+        &__txt {
+            font-size: ($base_font_size + 20px);
+            font-weight: bold;
+        }
+    }
+}
+
+#breadcrumb {
+    & .breadcrumb {
+        margin: 0;
+    }
+
+    & .breadcrumb-item {
+        font-size: ($base_font_size - 1px);
+        & + .breadcrumb-item::before {
+            content: var(--bs-breadcrumb-divider, ">");
+        }
+    }
+}
+
+

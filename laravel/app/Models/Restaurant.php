@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Restaurant extends Model
 {
@@ -16,10 +17,11 @@ class Restaurant extends Model
         'address_1',
         'address_2',
         'address_3',
+        'address_4',
         'tel',
         'logo',
-        // 'table_count',
-        // 'comment',
+        'table_count',
+        'comment',
     ];
 
     /**
@@ -32,11 +34,62 @@ class Restaurant extends Model
     }
 
     /**
-     * テーブル数を取得
+     * 住所を取得
      * @return int テーブル数
      */
     public function getAddress()
     {
-        return $this->attributes['address_1'] . $this->attributes['address_2'] . $this->attributes['address_3'];
+        return $this->attributes['address_1'] . $this->attributes['address_2'] . $this->attributes['address_3'] . $this->attributes['address_4'];
+    }
+
+    /**
+     * 店舗名を取得
+     * @return string 店舗名
+     */
+    public static function getName()
+    {
+        $restaurant_id = auth()->user()->restaurant_id;
+
+        if (empty($restaurant_id)) {
+            return null;
+        }
+
+        return Restaurant::where('id', auth()->user()->restaurant_id)->first()->restaurant_name;
+    }
+
+    /**
+     * 店舗名を取得
+     * @return string 店舗名
+     */
+    public static function getMyData()
+    {
+        // ログイン中のユーザーから店舗idを取得
+        $restaurant_id = auth()->user()->restaurant_id;
+
+        // 店舗情報をデータベースから所得
+
+        if (empty($restaurant_id)) {
+            return null;
+        }
+
+        return Restaurant::where('id', $restaurant_id)->first();
+    }
+
+    /**
+     * ロゴのURLを取得
+     * @return string logo
+     */
+    public static function getLogo()
+    {
+        // ログイン中のユーザーから店舗idを取得
+        $restaurant_id = Auth::user()->restaurant_id;
+
+        // 店舗情報をデータベースから所得
+
+        if (empty($restaurant_id)) {
+            return null;
+        }
+
+        return Restaurant::where('id', $restaurant_id)->first()->logo;
     }
 }

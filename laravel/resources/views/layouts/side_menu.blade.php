@@ -1,8 +1,3 @@
-<div class="header">
-    <div class="header-shop">
-        <p class="header-shop__txt">店の名前</p>
-    </div>
-</div>
 <menu class="gb-menu">
     <nav class="summary-menu">
         <ul class="summary-menu__box">

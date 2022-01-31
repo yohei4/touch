@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { createRef, useEffect } from "react";
-import {Button, Input, Title } from './index';
+import React, { createRef, useEffect, useMemo } from "react";
+import {Button, Input, Title, Select } from './index';
 
 import UIkit from 'uikit';
 
@@ -23,6 +23,7 @@ const Form1 = (props: Form1Props) => {
         address_1: createRef<HTMLInputElement>(),
         address_2: createRef<HTMLInputElement>(),
         address_3: createRef<HTMLInputElement>(),
+        address_4: createRef<HTMLInputElement>(),
         tel: createRef<HTMLInputElement>()
     }
 
@@ -34,21 +35,13 @@ const Form1 = (props: Form1Props) => {
             const data = response.data.data;
             const errors = response.data.errors;
             const status = response.data.status;
-            console.log(data);
+
             if(status == 'error') {
                 let error = '';
                 Object.keys(errors).forEach(key => {
                     error += errors[key][0] + '<br>';
                 });
             } else {
-                // Object.keys(data).forEach(key => {
-                //     console.log(key);
-                //     props.setFormData({
-                //         ...props.formData,
-                //         [key]: data[key]
-                //     });
-                //     console.log(data[key]);
-                // });
                 props.setFormData({
                     ...props.formData,
                     restaurant_name: data['restaurant_name'],
@@ -56,6 +49,7 @@ const Form1 = (props: Form1Props) => {
                     address_1: data['address_1'],
                     address_2: data['address_2'],
                     address_3: data['address_3'],
+                    address_4: data['address_3'],
                     tel: data['tel'],
                 });
                 props.next();
@@ -95,25 +89,31 @@ const Form1 = (props: Form1Props) => {
                         ref={aryref.postal_code}
                         required={true}
                     />
-                    <Input
-                        name={'add1'}
-                        txt={'都道府県・市区町村'}
-                        type={'text'}
+                    <Select
+                        name={'addr1'}
+                        txt={'都道府県'}
                         ref={aryref.address_1}
                         required={true}
                     />
                     <Input
-                        name={'add2'}
-                        txt={'番地'}
+                        name={'addr2'}
+                        txt={'市区町村'}
                         type={'text'}
                         ref={aryref.address_2}
                         required={true}
                     />
                     <Input
-                        name={'add3'}
-                        txt={'建物名・部屋番号'}
+                        name={'addr3'}
+                        txt={'番地'}
                         type={'text'}
                         ref={aryref.address_3}
+                        required={true}
+                    />
+                    <Input
+                        name={'addr4'}
+                        txt={'建物名・部屋番号'}
+                        type={'text'}
+                        ref={aryref.address_4}
                     />
                 </div>
                 <div className="form-item__outer">

@@ -1,6 +1,31 @@
+// カラー定数
+$header_bg: #ADADAD;
+$body_bg: #E6E6E6;
+$side_summary_bg: #A2A2A2;
+$btn_bg: #EBEBEB;
+$font_color: #3C3C3C;
+$inputbColor: #bbbbbb;
+
+// フォントサイズ定数
+$base_font_size: 17px;
+
+// 横幅や高さの定数
+$header_height: 28px;
+$side_menu_wigth: 276px;
+
+html {
+    // ビヨヨン効果を無効化する
+    overscroll-behavior: none;
+}
+
+body {
+    background: $body_bg;
+}
+
 .wrapper {
     width: 100%;
-    display: flex;
+    height: 100%;
+    position: fixed;
 }
 
 .form-required {
@@ -8,8 +33,120 @@
     color: white;
     background-color: rgb(255, 65, 65);
     padding: 2px 4px;
-    margin-left: 10px;
+    margin-left: 1px;
     &::after {
         content: '必須';
     }
+}
+
+.ajaxzip3 {
+    padding: 3px 15px;
+    border: 1px solid #707070;
+}
+
+// フォームファイル用
+.form-file {
+    display: flex;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    background-color: #f8fafc;
+    background-clip: padding-box;
+
+    & .form-file__inner {
+        padding: 0.375rem 0.75rem;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        font-size: 0.9rem;
+        & .clear-btn {
+            width: 20px;
+            height: 100%;
+            background-color: inherit;
+            position: relative;
+            display: none;
+            &.view {
+                display: block;
+            }
+            &::before {
+                content: "";
+                display: block;
+                width: 17px;
+                height: 1.2px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(45deg);
+                background-color: rgb(180, 180, 180);
+            }
+            &::after {
+                content: "";
+                display: block;
+                width: 17px;
+                height: 1.2px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(135deg);
+                background-color: rgb(180, 180, 180);
+            }
+        }
+    }
+    & .form-file__label {
+        width: 60px;
+        display: block;
+        & .browse-btn {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: relative;
+            background-color: #EFEFEF;
+            border-left: #ced4da 0.7px solid;
+            & i {
+                font-size: 1.32em;
+                height: auto;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
+
+// プレビュー用
+.preview-outer {
+    width: 100%;
+    height: 220px;
+    position: relative;
+    margin: 0 auto;
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 180px;
+        height: 180px;
+        transform: translate(-50%, -50%);
+        border: #B9B9B9 solid 1px;
+    }
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 185px;
+        height: 185px;
+        transform: translate(-50%, -50%);
+        border: #B9B9B9 solid 1px;
+    }
+}
+
+#preview {
+    max-width: 170px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

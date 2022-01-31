@@ -18,6 +18,7 @@ function Modal(props: ModalProps) {
                 modalOpen(parentEl);
             } else {
                 modalClose(parentEl);
+
             }
         }, 400);
 
@@ -33,14 +34,19 @@ function Modal(props: ModalProps) {
     const modalClose = (el: any):void => {
         el.classList.add('js-close__modal');
         el.classList.remove('js-show__modal');
+        setTimeout(() => {
+            el.style.display = 'none';
+        }, 400);
     }
 
     return (
+        <React.StrictMode>
         <div className="modal-content" ref={modal}>
             <Content
                 setIsOpen={setIsOpen}
             />
         </div>
+        </React.StrictMode>
     )
 };
 

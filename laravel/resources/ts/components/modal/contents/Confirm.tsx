@@ -48,14 +48,24 @@ const Confirm = (props: ConfilmProps) => {
                 inputData={props.formData.postal_code}
             />
             <ConfilmItem
-                id={'add1'}
-                label={'住所'}
-                inputData={props.formData.address_1 + props.formData.address_2}
+                id={'addr1'}
+                label={'都道府県'}
+                inputData={props.formData.address_1}
             />
             <ConfilmItem
-                id={'add2'}
-                label={'建物名・部屋番号'}
+                id={'addr2'}
+                label={'市区町村'}
+                inputData={props.formData.address_2}
+            />
+            <ConfilmItem
+                id={'addr3'}
+                label={'番地'}
                 inputData={props.formData.address_3}
+            />
+            <ConfilmItem
+                id={'addr4'}
+                label={'建物名・部屋番号'}
+                inputData={props.formData.address_4}
             />
             <ConfilmItem
                 id={'tel'}

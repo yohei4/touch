@@ -1,0 +1,36 @@
+#header {
+    width: 100%;
+    height: $header_height;
+    background: $header-bg;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    color: white;
+    font-size: ($base_font_size - 2px);
+    position: fixed;
+
+    & > div {
+        display: flex;
+        align-items: center;
+        & .header-shop {
+            &__txt {
+                font-weight: bold;
+            }
+        }
+        & .header-user {
+            background: $btn_bg;
+            padding: 1.7px 10px;
+            display: flex;
+            align-items: center;
+            & i {
+                color: $font_color;
+                font-size: 16px;
+                margin-right: 5px;
+            }
+            &__txt {
+                color: $font_color;
+                font-size: ($base_font_size - 5px);
+            }
+        }
+    }
+}

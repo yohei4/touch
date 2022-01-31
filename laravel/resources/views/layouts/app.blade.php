@@ -32,14 +32,20 @@
         <div id="modal-main"></div>
     </div>
 @endif
-    <div class="wrapper" data-barba="wrapper">
-        <div id="side-menu">
-           @include('app.side')
-        </div>
-        <main id="main" data-barba="container" data-barba-namespace="home">
-            @yield('content')
-        </main>
+    <header id="header" class="header">
+        @include('layouts.header')
+    </header>
+    <div id="side-menu">
+        @include('layouts.side_menu')
     </div>
+    <main id="main" data-barba="container" data-barba-namespace="home">
+        <div class="main-container">
+            @include('app.components.header')
+            <div class="main-content">
+                @yield('content')
+            </div>
+        </div>
+    </main>
 
     {{-- <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
         {{ __('Logout') }}

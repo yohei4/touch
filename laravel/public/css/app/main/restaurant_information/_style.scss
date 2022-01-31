@@ -1,0 +1,59 @@
+.form-outer {
+    margin-top: 40px;
+    font-size: ($base_font_size - 1px);
+}
+
+#restaurant-information {
+    & .form-item {
+        display: flex;
+        align-items: center;
+        &:not(:last-child) {
+            margin-bottom: 38px;
+        }
+        &:nth-of-type(2) {
+            & .form-input {
+                margin-right: 40px;
+            }
+        }
+        &:nth-of-type(8) {
+            align-items: inherit;
+            & .form-label__outer {
+                padding-top: 5px;
+            }
+        }
+        &:nth-last-of-type(2) {
+            align-items: inherit;
+            & .form-label__outer {
+                padding-top: 5px;
+            }
+        }
+    }
+
+    & .form-label__outer {
+        width: 20%;
+        & .form-label {
+            margin: 0;
+            font-weight: bold;
+        }
+    }
+
+    & .form-control {
+        width: 30%;
+    }
+
+    & .react-form__file {
+        width: 30%;
+    }
+
+    // & .file-item {
+    //     width: 30%;
+    // }
+
+    & .form-btn {
+        border: 1px solid #707070;
+        padding: 8px 20px;
+        letter-spacing: 3px;
+    }
+}
+
+
