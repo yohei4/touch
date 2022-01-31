@@ -94,3 +94,15 @@ Route::post('/info/restaurant-information/update', 'RestaurantInformationControl
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group( ['middleware' => 'api'], function(){
+    Route::get('getRestaurantData', 'RestaurantInformationController@getRestaurntData');
+});
+
+Route::group( ['middleware' => 'api'], function(){
+    Route::get('getLogo', 'RestaurantInformationController@getLogo');
+});
+
+Route::group( ['middleware' => 'api'], function(){
+    Route::get('getPrefectures', 'RestaurantInformationController@getPrefectures');
+});

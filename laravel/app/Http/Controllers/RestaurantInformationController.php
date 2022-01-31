@@ -9,6 +9,7 @@ use App\Models\Prefectures;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RestaurantRequest;
 use App\Http\Resources\RestaurantdataResource;
+use App\Http\Resources\LogoResource;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -36,7 +37,7 @@ class RestaurantInformationController extends Controller
         );
     }
 
-    public function update(RestaurantRequest $request)
+    public function update(Request $request)
     {
         $data = $request->all();
 
@@ -70,5 +71,26 @@ class RestaurantInformationController extends Controller
         }
 
         return new RestaurantdataResource($data);
+    }
+
+    public function getLogo()
+    {
+        $disk_name = 'local';
+        if (Auth::check()) {
+
+            $data = Restaurant::find(Auth::user()->restaurant_id);
+            $file_name = 'public/' . $data->logo;
+
+            $exists = Storage::disk($disk_name)->exists($file_name);
+
+            if ($exists) {
+                $file = Storage::disk($disk_name)->get($file_name);
+                $data->file_base64 = base64_encode($file);
+            } else {
+                $data->file_base64 = '';
+            }
+        }
+
+        return new LogoResource($data);
     }
 }

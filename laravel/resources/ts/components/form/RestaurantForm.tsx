@@ -156,10 +156,10 @@ const RestaurantInformationForm = () => {
                 <InputFile
                     name={'logo'}
                     txt={'ロゴ写真'}
-                    savedLogo={data.file_base64}
-                    value={data.logo}
-                    onChange={handleChange}
-                    onDelete={handleDelete}
+                    // savedLogo={data.file_base64}
+                    // value={data.logo}
+                    // onChange={handleChange}
+                    // onDelete={handleDelete}
                 />
                 <div className="form-item">
                     <Button
