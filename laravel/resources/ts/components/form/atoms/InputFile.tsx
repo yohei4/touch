@@ -1,20 +1,18 @@
-import React, { useEffect, useMemo, useRef, useLayoutEffect } from "react";
+import React, { useEffect, useMemo, useRef, useLayoutEffect, useState } from "react";
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 interface InputFileProps {
     name: string;
     txt: string;
-    savedLogo?: string;
-    value?: string;
     required?: boolean;
-    onChange(event: any): void;
-    onDelete(key: any): void;
 };
 
 const InputFile = (props: InputFileProps) => {
 
     const defaultFileName = '選択されていません';
     const defaultDnd = 'images/dnd.jpg';
+    const [picture, setPicture] = useState(null);
     const [fileName, setFileName] = React.useState(defaultFileName);
     const refLogo = useRef<HTMLInputElement>();
     const clearBtn = useRef(null);
@@ -22,25 +20,39 @@ const InputFile = (props: InputFileProps) => {
 
     // 初期表示時のみ、有効
     useEffect(() => {
-        if(props.savedLogo) savedFilePreview(props.savedLogo);
-    },[props.savedLogo]);
+        // const token = document.head.querySelector<HTMLMetaElement>('meta[name="csrf-token"]').content;
+        axios.get('/api/getLogo').then( res => {
+            console.log('取得成功');
+            savedFilePreview(res.data.data.file_base64);
+        }).catch(error => {
+            console.log(error);
+            console.log('取得失敗');
+        })
+    },[]);
 
     // 初期表示
     const savedFilePreview = (data: any): void => {
         // ファイル名の初期表示時
         setFileName('保存済みのロゴです。');
 
-        // base64 → blob(file)
+        // base64 → blob
         const blob = toBlob(data);
         previewImage(blob);
+        setPicture(toFile(blob));
+        console.log(picture);
+        console.log(refLogo.current.files[0]);
+        if (picture) {
+            refLogo.current.files[0] = picture;
+        }
+        console.log(refLogo.current.files[0]);
     }
 
     //ファイル選択
     const selectFile = (e: any): void => {
         const files = e.target.files;
-        props.onChange(e);
         if(files.length > 0) {
             const file = files[0];
+            console.log(file);
             setFileName(file.name);
             previewImage(file);
             clearBtnView();
@@ -62,6 +74,18 @@ const InputFile = (props: InputFileProps) => {
             return false;
         }
         return blob;
+    }
+
+    const toFile = (blob: any) =>  {
+        if (blob) {
+            try{
+                var file = new File([blob], "logo.jpg", { type: 'image/jpg' });
+            }catch (e){
+                return false;
+            }
+        }
+
+        return file;
     }
 
     //画像ファイルを表示
@@ -100,10 +124,11 @@ const InputFile = (props: InputFileProps) => {
 
     //クリアボタンのクリックイベント
     const clearBtnClick = (e: any): void => {
+        console.log(refLogo.current.value);
         deleteFlieName();
         clearBtn.current.classList.remove('view');
         hideImage();
-        props.onDelete(refLogo.current.id);
+        console.log(refLogo.current.value);
     };
 
     //参照ボタンのクリックイベント
@@ -113,11 +138,6 @@ const InputFile = (props: InputFileProps) => {
 
     return (
         <React.StrictMode>
-            <div className="form-item">
-                <div className="form-label__outer">
-                    <label className="form-label" htmlFor={props.name}>{props.txt}</label>
-                    { props.required === true ? <span className="form-required"></span> : null }
-                </div>
                 <div className="file-item">
                     <div className="form-file">
                         <div className="form-file__inner">
@@ -133,9 +153,12 @@ const InputFile = (props: InputFileProps) => {
                         <canvas ref={canvas} id="preview"></canvas>
                     </div>
                 </div>
-            </div>
         </React.StrictMode>
     )
 };
 
 export default InputFile;
+
+if(document.querySelector('.react-form__file')) {
+    ReactDOM.render(<InputFile name={'logo'} txt={'ロゴ画像'}/>, document.querySelector('.react-form__file'));
+}

@@ -18,10 +18,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group( ['middleware' => 'api'], function(){
+Route::group( ['middleware' => 'auth:api'], function(){
     Route::get('getRestaurantData', 'RestaurantInformationController@getRestaurntData');
 });
 
-// Route::group( ['middleware' => 'api'], function(){
-//     Route::get('getPrefectures', 'RestaurantInformationController@getPrefectures');
-// });
+Route::group( ['middleware' => 'auth:api'], function(){
+    Route::get('getLogo', 'RestaurantInformationController@getLogo');
+});
+
+Route::group( ['middleware' => 'auth:api'], function(){
+    Route::get('getPrefectures', 'RestaurantInformationController@getPrefectures');
+});
+
