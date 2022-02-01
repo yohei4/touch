@@ -35,7 +35,7 @@ class RestaurantRequest extends FormRequest
             'address_3' => 'required|max:32',
             'address_4' => 'nullable|max:32',
             'tel' => ['required', new TelRule],
-            'logo' => 'nullable',
+            'logo' => 'nullable|image|max:20000|mimes:jpg,gif,jpeg,png',
             'table_count' => 'nullable',
             'comment' => 'nullable|max:500',
         ];

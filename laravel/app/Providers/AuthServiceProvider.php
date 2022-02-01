@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use App\Auth\CustomSessionGuard;
 use App\Auth\CustomEloquentUserProvider;
+use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -29,32 +30,36 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Auth::provider('customUsers', function ($app, array $config) {
-            return new CustomEloquentUserProvider($this->app['hash'], $config['model']);
-        });
+        Passport::routes();
 
-        Auth::extend('custom', function($app, $name, array $config) {
-            $session = $this->app->make(Session::class);
-            $provider = Auth::createUserProvider($config['provider'] ?? null);
-            $guard = new CustomSessionGuard($name, $provider, $app["session.store"]);
+        // Passport::loadKeysFrom(__DIR__.'/../secrets/oauth');
 
-            //認証サービスのrememberme機能を使用する場合は、
-            //ガードの暗号化インスタンスを設定する必要があります。
-            //これにより、安全な暗号化されたCookie値をそれらのCookieに対して生成できます。
-            if (method_exists($guard, 'setCookieJar')) {
-                $guard->setCookieJar($app['cookie']);
-            }
+        // Auth::provider('customUsers', function ($app, array $config) {
+        //     return new CustomEloquentUserProvider($this->app['hash'], $config['model']);
+        // });
 
-            if (method_exists($guard, 'setDispatcher')) {
-                $guard->setDispatcher($app['events']);
-            }
+        // Auth::extend('custom', function($app, $name, array $config) {
+        //     $session = $this->app->make(Session::class);
+        //     $provider = Auth::createUserProvider($config['provider'] ?? null);
+        //     $guard = new CustomSessionGuard($name, $provider, $app["session.store"]);
 
-            if (method_exists($guard, 'setRequest')) {
-                $guard->setRequest($app->refresh('request', $guard, 'setRequest'));
-            }
+        //     //認証サービスのrememberme機能を使用する場合は、
+        //     //ガードの暗号化インスタンスを設定する必要があります。
+        //     //これにより、安全な暗号化されたCookie値をそれらのCookieに対して生成できます。
+        //     if (method_exists($guard, 'setCookieJar')) {
+        //         $guard->setCookieJar($app['cookie']);
+        //     }
 
-            return $guard;
-        });
+        //     if (method_exists($guard, 'setDispatcher')) {
+        //         $guard->setDispatcher($app['events']);
+        //     }
+
+        //     if (method_exists($guard, 'setRequest')) {
+        //         $guard->setRequest($app->refresh('request', $guard, 'setRequest'));
+        //     }
+
+        //     return $guard;
+        // });
 
         // 開発者のみ許可
         Gate::define('system-only', function ($user) {

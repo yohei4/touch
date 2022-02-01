@@ -42,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
             'hash' => false,
         ],
@@ -75,7 +75,7 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
-        
+
         'auth' => [
             'driver' => 'customUsers',
             'model' => App\Models\User::class,
