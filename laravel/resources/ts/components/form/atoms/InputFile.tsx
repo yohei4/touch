@@ -12,7 +12,6 @@ const InputFile = (props: InputFileProps) => {
 
     const defaultFileName = '選択されていません';
     const defaultDnd = 'images/dnd.jpg';
-    const [picture, setPicture] = useState(null);
     const [fileName, setFileName] = React.useState(defaultFileName);
     const refLogo = useRef<HTMLInputElement>();
     const clearBtn = useRef(null);
@@ -20,8 +19,7 @@ const InputFile = (props: InputFileProps) => {
 
     // 初期表示時のみ、有効
     useEffect(() => {
-        // const token = document.head.querySelector<HTMLMetaElement>('meta[name="csrf-token"]').content;
-        axios.get('/api/getLogo').then( res => {
+        axios.get('/getLogo').then( res => {
             console.log('取得成功');
             savedFilePreview(res.data.data.file_base64);
         }).catch(error => {
@@ -31,20 +29,13 @@ const InputFile = (props: InputFileProps) => {
     },[]);
 
     // 初期表示
-    const savedFilePreview = (data: any): void => {
+    const savedFilePreview = (base64: any): void => {
         // ファイル名の初期表示時
         setFileName('保存済みのロゴです。');
 
         // base64 → blob
-        const blob = toBlob(data);
+        const blob = toBlob(base64);
         previewImage(blob);
-        setPicture(toFile(blob));
-        console.log(picture);
-        console.log(refLogo.current.files[0]);
-        if (picture) {
-            refLogo.current.files[0] = picture;
-        }
-        console.log(refLogo.current.files[0]);
     }
 
     //ファイル選択
@@ -66,30 +57,20 @@ const InputFile = (props: InputFileProps) => {
         for (var i = 0; i < bin.length; i++) {
             buffer[i] = bin.charCodeAt(i);
         }
-        try{
-            var blob = new Blob([buffer.buffer], {
-                type: 'image/jpg'
-            });
-        }catch (e){
-            return false;
-        }
+        var blob = new Blob([buffer.buffer], {
+            type: 'image/jpg'
+        });
+
         return blob;
     }
 
-    const toFile = (blob: any) =>  {
-        if (blob) {
-            try{
-                var file = new File([blob], "logo.jpg", { type: 'image/jpg' });
-            }catch (e){
-                return false;
-            }
-        }
-
+    const toFile = (blob: Blob) =>  {
+        const file = new File([blob], "logo.jpg", { type: 'image/jpg' });
         return file;
     }
 
     //画像ファイルを表示
-    const previewImage = (file: any): void => {
+    const previewImage = (file: Blob): void => {
         const reader = new FileReader();
         const ctx = canvas.current.getContext('2d');
         const image = new Image() as HTMLImageElement;

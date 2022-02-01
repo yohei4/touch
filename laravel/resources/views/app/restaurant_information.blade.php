@@ -2,7 +2,7 @@
 @section('title', '店舗情報')
 @section('content')
     <div class="form-outer">
-        <form action="{{ route('restaurant_information/update') }}" id="restaurant-information" class="form" method="post">
+        <form action="{{ route('restaurant_information/update') }}" id="restaurant-information" class="form" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-item">
                 <div class="form-label__outer">
