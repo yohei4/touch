@@ -12,16 +12,21 @@ const InputFile = (props: InputFileProps) => {
 
     const defaultFileName = '選択されていません';
     const defaultDnd = 'images/dnd.jpg';
+    const [savedImage, setSavedImage] = useState('');
     const [fileName, setFileName] = React.useState(defaultFileName);
     const refLogo = useRef<HTMLInputElement>();
     const clearBtn = useRef(null);
     const canvas = useRef(null);
 
     // 初期表示時のみ、有効
-    useEffect(() => {
+    useLayoutEffect(() => {
         axios.get('/getLogo').then( res => {
             console.log('取得成功');
-            savedFilePreview(res.data.data.file_base64);
+
+            if (res.data.data.logo != null && res.data.data.logo != '') {
+                setSavedImage(res.data.data.logo);
+                savedFilePreview(res.data.data.file_base64);
+            }
         }).catch(error => {
             console.log(error);
             console.log('取得失敗');
@@ -128,6 +133,7 @@ const InputFile = (props: InputFileProps) => {
                         <label className="form-file__label" htmlFor={props.name}>
                             <button type="button" className="browse-btn" onClick={() => browseBtnClick()}><i className="fas fa-folder"></i></button>
                             <input id={props.name} className="modal-form__input d-none" ref={refLogo} onChange={e => selectFile(e)} type='file' name={props.name} multiple/>
+                            <input type="hidden" name="saved_logo" value={savedImage}/>
                         </label>
                     </div>
                     <div className="preview-outer">

@@ -30,7 +30,7 @@
                 <select class="form-select form-control" name="address_1" id="address_1" placeholder="都道府県">
                     <option value=""></option>
                     @foreach($prefectures as $item)
-                        <option value="{{ $item->name }}" {{ old('address_1') === $item->name || $restaurant->address_1 === $item->name ? "selected" : ""}}>{{ $item->name }}</option>
+                        <option value="{{ $item->name }}" {{ $restaurant->address_1 === $item->name ? "selected" : "" }}>{{ $item->name }}</option>
                     @endforeach
                 </select>
             </div>
