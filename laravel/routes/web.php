@@ -100,7 +100,7 @@ Route::group( ['middleware' => 'api'], function(){
 });
 
 Route::group( ['middleware' => 'api'], function(){
-    Route::get('getLogo', 'RestaurantInformationController@getLogo');
+    Route::get('getLogo', 'RestaurantInformationController@getLogoFile');
 });
 
 Route::group( ['middleware' => 'api'], function(){

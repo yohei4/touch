@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RestaurantRequest;
 use Illuminate\Http\Request;
+use App\Common\Image;
 
 class RestaurantController extends Controller
 {
@@ -51,7 +52,7 @@ class RestaurantController extends Controller
     public function saveLogo($file, $restaurant_id)
     {
         // 画像をstorageに保存
-        $path = $file->storeAs(
+        $path = 'public/' . $file->storeAs(
             'images/' . $restaurant_id,
             'logo.' . $file->extension(),
             'public'
