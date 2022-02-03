@@ -81,28 +81,6 @@
                 <input class="form-input form-control" type="text" name="table_count" id="table_count" value="{{ $restaurant->table_count }}" placeholder="テーブル数"/>
             </div>
 
-            {{-- <div class="form-item">
-                <div class="form-label__outer">
-                    <label class="form-label" for="table_count">ロゴ写真</label>
-                </div>
-                <div class="file-item">
-                    <div class="form-file">
-                        <div class="form-file__inner">
-                            <button type="button" class="clear-btn"></button>
-                            <span class="form-file__name">選択されていません。</span>
-                        </div>
-                        <label class="form-file__label" for="logo">
-                            <button type="button" class="browse-btn"><i class="fas fa-folder"></i></button>
-                            <input id="logo" class="modal-form__input d-none" multiple/>
-                            <input id="logo" name="logo" class="form-input" type='file' multiple/>
-                        </label>
-                    </div>
-                    <div class="preview-outer">
-                        <canvas id="preview"></canvas>
-                    </div>
-                </div>
-            </div> --}}
-
             <div class="form-item">
                 <div class="form-label__outer">
                     <label class="form-label" for="table_count">ロゴ写真</label>
