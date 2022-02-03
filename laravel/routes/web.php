@@ -33,6 +33,12 @@ Route::post('/restaurant/ajax/save', 'RestaurantController@save')->name('restaur
 Route::post('/restaurant/ajax/validation1', 'Ajax\ModalController@ajaxCheck')->name('ajaxValidation');
 
 /**
+* 商品一覧ページ
+*/
+Route::get('/list/food-list', 'FoodListController@index')->name('food_list');
+// Route::post('/info/food-store', 'FoodController@store')->name('food_store');
+
+/**
 * 店舗情報
 */
 Route::get('/info/restaurant-information', 'RestaurantInformationController@index')->name('restaurant_information');
@@ -57,7 +63,7 @@ Route::post('/info/restaurant-information/update', 'RestaurantInformationControl
 // Route::post('/info/food-type/delete', 'Ajax\FoodTypeController@delete')->name('type_delete');
 
 /**
-* 商品登録ページ
+* 商品一覧ページ
 */
 // Route::get('/info/food-page', 'FoodController@index')->name('food_page');
 // // 商品登録

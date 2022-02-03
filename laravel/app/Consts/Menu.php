@@ -6,7 +6,7 @@ class Menu
 {
     public const SUMMARY_MEYU = [
         ['id' => 'summary-btn-1', 'name' => 'ホーム', 'className' => 'fas fa-home', 'sectionId' => 'home'],
-        ['id' => 'summary-btn-2', 'name' => '品書き', 'className' => 'ico-menu', 'sectionId' => 'menu-setting'],
+        ['id' => 'summary-btn-2', 'name' => '品書き', 'className' => 'ico-menu', 'sectionId' => 'list'],
         ['id' => 'summary-btn-3', 'name' => '在庫', 'className' => 'fas fa-boxes', 'sectionId' => 'stock'],
         ['id' => 'summary-btn-4', 'name' => '帳票', 'className' => 'fab fa-wpforms', 'sectionId' => 'form'],
         ['id' => 'summary-btn-5', 'name' => '基本情報', 'className' => 'fas fa-cogs', 'sectionId' => 'info'],
@@ -19,9 +19,9 @@ class Menu
             ['id' => 'home-btn-3', 'name' => '売れ行き管理', 'url' => '', 'summaryId' => '1'],
             ['id' => 'home-btn-4', 'name' => 'お客様ページ管理', 'url' => '', 'summaryId' => '1'],
         ],
-        'menu-setting' => [
-            ['id' => 'menu-setting-btn-1', 'name' => '在庫管理', 'url' => '', 'summaryId' => '2'],
-            ['id' => 'menu-setting-btn-2', 'name' => '仕入れ管理', 'url' => '', 'summaryId' => '2'],
+        'list' => [
+            ['id' => 'list-btn-1', 'name' => '商品一覧', 'url' => '/list/food-list', 'summaryId' => '2'],
+            ['id' => 'list-btn-2', 'name' => '商品カテゴリー', 'url' => '', 'summaryId' => '2'],
         ],
         'stock' => [
             ['id' => 'stock-btn-1', 'name' => '在庫管理', 'url' => '', 'summaryId' => '3'],
