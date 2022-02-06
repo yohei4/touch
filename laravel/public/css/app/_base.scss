@@ -5,6 +5,7 @@ $side_summary_bg: #A2A2A2;
 $btn_bg: #EBEBEB;
 $font_color: #3C3C3C;
 $inputbColor: #bbbbbb;
+$input_bg: #f8fafc;
 
 // フォントサイズ定数
 $base_font_size: 17px;
@@ -22,12 +23,26 @@ body {
     background: $body_bg;
 }
 
+a {
+    text-decoration: none;
+}
+
 .wrapper {
     width: 100%;
     height: 100%;
     position: fixed;
 }
 
+// サイドメニューのお品書き用
+.restaurant-menu {
+    display: block;
+    width: 38px;
+    height: 38px;
+    margin: 0 auto;
+    @include svg-view('000');
+}
+
+// 必須項目用
 .form-required {
     font-size: 7.5px;
     color: white;
@@ -39,9 +54,54 @@ body {
     }
 }
 
+// [郵便番号で住所取得]ボタン
 .ajaxzip3 {
     padding: 3px 15px;
     border: 1px solid #707070;
+}
+
+// チェックボックス
+input[type=checkbox] {
+    appearance: none;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    background: inherit;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 0;
+    height: 1rem;
+    margin: -0.25rem 0.25rem 0 0;
+    outline: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 1rem;
+    min-width: 1rem;
+    position: relative;
+    overflow: hidden;
+    &:checked {
+        border: none;
+        &::before {
+            content: '';
+            width: 101%;
+            height: 101%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #39C4C9;
+        }
+        &::after {
+            content: url('data:image/svg+xml;charset=utf8,<svg id="check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 405.03 399.22"><path fill="%23fff" d="M475,50.68c-4.07,6.67-75.5,75.7-107.89,116.57-10.2,12.87-27.94,38-36.3,52.16C294.27,281.2,195,448.36,195,448.36h-3.94l-59.9-107.79c-17.63-39.84-44.5-57.74-61.21-50.34,0,0,10.11-19.92,21.8-26.68,11.23-6.5,22.55-5.05,32.29-.83,3.18,1.38,16.25,12.8,26.54,23,0,0,24.88,28.44,42.45,56.93,10.82-19.42,51.09-86.7,57.49-93.93s37.08-55.84,43.46-63.09c38.45-46.5,58.85-66.67,82.83-83.85,32.47-23.28,87.77-49.65,90.5-52.67Z" transform="translate(-69.96 -49.14)"/></svg>');
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90%;
+            height: 90%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+        }
+    }
 }
 
 // フォームファイル用
@@ -49,7 +109,7 @@ body {
     display: flex;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
-    background-color: #f8fafc;
+    background-color: $input_bg;
     background-clip: padding-box;
 
     & .form-file__inner {
@@ -113,7 +173,7 @@ body {
     }
 }
 
-// プレビュー用
+// プレビュー用(フォームファイルで選択した画像を表示)
 .preview-outer {
     width: 100%;
     height: 220px;
@@ -149,4 +209,31 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+// 商品行のactions用
+.row-actions {
+    opacity: 0;
+    & span {
+        & + span::before {
+            content:  "|";
+            color:$header_bg;
+            margin-right: 5px;
+            display: inline-block;
+            padding-bottom: 3px;
+        }
+
+        &.trash a {
+            color:rgb(224, 45, 45);
+        }
+    }
+}
+
+// 商品行のactionsを表示
+.the-list tr {
+    &:hover {
+        & .row-actions {
+            opacity: 1;
+        }
+    }
 }

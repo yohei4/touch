@@ -6,7 +6,7 @@ class Menu
 {
     public const SUMMARY_MEYU = [
         ['id' => 'summary-btn-1', 'name' => 'ホーム', 'className' => 'fas fa-home', 'sectionId' => 'home'],
-        ['id' => 'summary-btn-2', 'name' => '品書き', 'className' => 'ico-menu', 'sectionId' => 'list'],
+        ['id' => 'summary-btn-2', 'name' => 'お品書き', 'className' => 'restaurant-menu', 'sectionId' => 'list'],
         ['id' => 'summary-btn-3', 'name' => '在庫', 'className' => 'fas fa-boxes', 'sectionId' => 'stock'],
         ['id' => 'summary-btn-4', 'name' => '帳票', 'className' => 'fab fa-wpforms', 'sectionId' => 'form'],
         ['id' => 'summary-btn-5', 'name' => '基本情報', 'className' => 'fas fa-cogs', 'sectionId' => 'info'],

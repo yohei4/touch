@@ -10,7 +10,7 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
 
 // 品書き
 Breadcrumbs::for('list', function (BreadcrumbTrail $trail) {
-    $trail->push('品書き');
+    $trail->push('お品書き');
 });
 
 // 基本情報
