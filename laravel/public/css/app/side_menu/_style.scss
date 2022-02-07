@@ -1,6 +1,6 @@
 #side-menu {
     width: $side_menu_wigth;
-    height: calc(100% - $header_height);
+    height: calc(100% - 32px);
     background: #D1D1D1;
     overflow-y: hidden;
     position: fixed;

@@ -1,40 +1,142 @@
+// サブメニュー
 .subsub-menu {
     display: flex;
-    // width: 100%;
-    justify-content: space-between;
-    &__btnbox {
-        display: flex;
-    }
+    float: left;
     &__btn {
         background: none;
         display: flex;
         justify-content: center;
         align-items: center;
-        & span {
-            display: block;
-        }
         & + .subsub-menu__btn::before {
             content:  "|";
             margin-right: 6px;
             display: block;
             padding-bottom: 3px;
         }
-    }
-
-    &__searchbox {
-        width: fit-content;
-        & .form-search {
-            display: flex;
-            & .search-input {
-                width: 100%;
-                padding: 0.2rem 0.5rem;
-                margin-right: 10px;
-            }
-            & .search-btn {
-                border: 1px solid $font_color;
-                border-radius: 3px;
-                width: 10rem;
+        & a {
+            text-decoration: none;
+            color: $font_color;
+            &.current {
+                font-weight: bold;
             }
         }
     }
  }
+
+// form部分
+.posts-filter {
+    margin-bottom: 18px;
+    & .search-box {
+        float: right;
+        display: flex;
+        width: auto;
+        & .search-input {
+            width: 250px;
+            padding: 0.2rem 0.5rem;
+            margin-right: 10px;
+        }
+        & .search-btn {
+            display: inline-block;
+        }
+    }
+
+    & .tablenav {
+        clear: both;
+        padding-top: 10px;
+        vertical-align: bottom;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        & .actions-box {
+            display: flex;
+            & .align-left__actions {
+                margin-right: 15px;
+            }
+        }
+        & .displaying-num {
+            height: 100%;
+            vertical-align: text-bottom;
+        }
+        & .tablenav-select {
+            width: fit-content;
+            height: fit-content;
+            padding-top: 0.2rem;
+            padding-bottom: 0.2rem;
+            margin-right: 3px;
+            display: inline-block;
+        }
+    }
+}
+
+// 表部分
+.food-list__table {
+    width: 100%;
+    background: #fff;
+    border: 1px solid $inputbColor;
+    & .check-column {
+        width: 3%;
+        padding-left: 15px;
+    }
+    & thead {
+        border-bottom: 1px solid $inputbColor;
+        & th {
+            padding: 9px;
+            &.column-food {
+                width: 23%;
+            }
+            &.column-category {
+                width: 20%;
+            }
+            &.column-money {
+                width: 11%;
+            }
+            &.column-images {
+                width: 11%;
+            }
+            &.column-status {
+                width: 11%;
+            }
+            &.column-date {
+            }
+        }
+    }
+
+    & .the-list {
+        vertical-align: top;
+        & tr {
+            &:nth-child(odd) {
+                background: #f3f3f3;
+            }
+        }
+        & th {
+            padding: 9px 0 0 15px;
+        }
+        & td {
+            padding: 9px;
+            &.column-food {
+                width: 23%;
+            }
+            &.column-category {
+                width: 20%;
+            }
+            &.column-money {
+                width: 11%;
+            }
+            &.column-images {
+                width: 11%;
+            }
+            &.column-status {
+                width: 11%;
+            }
+            &.column-date {
+            }
+        }
+    }
+}
+
+.form-btn {
+    border: 1px solid $font_color;
+    border-radius: 3px;
+    width: fit-content;
+    padding: 0.2rem 1rem;
+}
