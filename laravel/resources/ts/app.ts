@@ -14,3 +14,4 @@ require('./bootstrap');
 
 require('./components/modal/Modal.tsx');
 require('./components/form/atoms/InputFile');
+require('./components/utility/FileUpLoader/FileUpLoader');
