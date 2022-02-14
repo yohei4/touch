@@ -35,7 +35,7 @@ class Menu
         'info' => [
             ['id' => 'info-btn-1', 'name' => '商品登録', 'url' => '', 'summaryId' => '5'],
             ['id' => 'info-btn-2', 'name' => '商品種別登録', 'url' => '', 'summaryId' => '5'],
-            ['id' => 'info-btn-3', 'name' => '店舗情報', 'url' => '/info/restaurant-information', 'summaryId' => '5'],
+            ['id' => 'info-btn-3', 'name' => '店舗情報', 'url' => '/info/restaurant-info', 'summaryId' => '5'],
             ['id' => 'info-btn-4', 'name' => 'テーブル数登録', 'url' => '', 'summaryId' => '5'],
             ['id' => 'info-btn-5', 'name' => '管理者登録', 'url' => '', 'summaryId' => '5'],
         ],

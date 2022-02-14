@@ -42,8 +42,9 @@ Route::get('/list/food-list', 'FoodListController@index')->name('food_list');
 /**
 * 店舗情報
 */
-Route::get('/info/restaurant-information', 'RestaurantInformationController@index')->name('restaurant_information');
-Route::post('/info/restaurant-information/update', 'RestaurantInformationController@update')->name('restaurant_information/update');
+Route::get('/info/restaurant-info', 'RestaurantInformationController@index')->name('restaurant_information');
+Route::get('/info/restaurant-info/ajax/get', 'RestaurantInformationController@getRestaurntData')->name('restaurant_info_ajax_get');
+Route::post('/info/restaurant-information/update', 'RestaurantInformationController@update')->name('restaurant_info_upd');
 
 /**
 * QRコードページ
@@ -101,10 +102,6 @@ Route::post('/info/restaurant-information/update', 'RestaurantInformationControl
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
-
-Route::group( ['middleware' => 'api'], function(){
-    Route::get('getRestaurantData', 'RestaurantInformationController@getRestaurntData');
-});
 
 Route::group( ['middleware' => 'api'], function(){
     Route::get('getLogo', 'RestaurantInformationController@getLogoFile');

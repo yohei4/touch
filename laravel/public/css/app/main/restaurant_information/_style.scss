@@ -22,24 +22,14 @@
                 padding-top: 5px;
             }
         }
-    }
 
-    & .form-label__outer {
-        width: 20%;
-        & .form-label {
-            margin: 0;
-            font-weight: bold;
+        &__container {
+            width: 33%;
         }
-    }
 
-    & .react-form__file {
-        width: 33%;
-    }
-
-    & .form-btn {
-        border: 1px solid #707070;
-        padding: 8px 20px;
-        letter-spacing: 3px;
+        & .ajaxzip3 {
+            margin-left: 15px;
+        }
     }
 }
 

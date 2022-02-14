@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, forwardRef, Ref } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Button from './Button';
 import Converter from '../../Converter';
 
@@ -25,19 +25,12 @@ const Preview = (props: PreviewProps) => {
         });
     };
 
-    // 画像ファイルを非表示
-    // const deleteImage = (): void => {
-    //     const ctx = canvas.current.getContext('2d');
-    //     ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
-    // }
-
     return (
         <li className="photo-item" ref={PhotoItem}>
             <picture>
                 <img className="photo-item__preview" ref= {imgRef} />
             </picture>
             <Button
-                id={props.id}
                 onClick={e => props.onClick(e, props.index)}
             />
         </li>

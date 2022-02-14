@@ -1,9 +1,6 @@
-import React, { useEffect, useMemo, useRef, useLayoutEffect, useState, useCallback, Ref } from "react";
-import ReactDOM from 'react-dom';
+import React, { useEffect, useRef, useState } from "react";
 import { useDropzone } from 'react-dropzone';
-import axios from 'axios';
 import Preview from './Preview';
-import Converter from '../../Converter';
 
 interface FileUpLoaderProps {
     name: string;
@@ -28,9 +25,11 @@ const FileUpLoader = (props: FileUpLoaderProps) => {
                     if(props.max > newPhotos.length) {
                         newKey++;
                         newPhotos.push({key: newKey, original: file});
-                        setPhotos(newPhotos);
+                    } else {
+                        return;
                     }
                 })
+            setPhotos(newPhotos);
             setKey(newKey);
         }
     });
@@ -59,15 +58,15 @@ const FileUpLoader = (props: FileUpLoaderProps) => {
     return (
         <React.StrictMode>
             <div className="form-item">
-                <div className="form-item__lavel">
-                    <label className="form-item__lavel--txt" htmlFor={props.name}>{props.txt}</label>
+                <div className="form-item__label">
+                    <label className="form-item__label--txt" htmlFor={props.name}>{props.txt}</label>
                     { props.required === true ? <span className="form-required"></span> : null }
                 </div>
                 <div className="form-item__container">
                     <div {...getRootProps({className: 'form-item__dropzone'})} ref={dropZoneRef}>
-                        <input {...getInputProps()} ref={inputRef} />
+                        <input {...getInputProps()} ref={inputRef} name={props.name} />
                         <div>
-                            <button className="form-item__dropzone__btn" onClick={open}><i className="fas fa-camera"></i><span className="form-item__dropzone__btn--txt">画像を選択する</span></button>
+                            <button type="button" className="form-item__dropzone__btn" onClick={open}><i className="fas fa-camera"></i><span className="form-item__dropzone__btn--txt">画像を選択する</span></button>
                             <span className="form-item__dropzone--txt">または、ドラッグ&ドロップ</span>
                         </div>
                     </div>

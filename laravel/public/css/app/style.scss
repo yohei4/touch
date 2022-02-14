@@ -1,8 +1,10 @@
+@import "./variables";
 @import "./reset";
 @import "./mixin";
 @import "./base";
+@import "./utility";
 @import "./customFontAwesome";
-@import "./header/header";
+@import "./header/style";
 @import "./side_menu/style";
 @import "./modal/modal";
 @import "./main/base";

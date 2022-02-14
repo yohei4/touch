@@ -12,6 +12,4 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/modal/Modal.tsx');
-require('./components/form/atoms/InputFile');
-require('./components/utility/FileUpLoader/FileUpLoader');
+require('./components/view');

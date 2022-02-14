@@ -24,8 +24,7 @@ class RestaurantdataResource extends JsonResource
             'tel' => $this->tel,
             'table_count' => $this->table_count,
             'comment' => $this->comment,
-            'logo' => $this->logo,
-            'file_base64' => $this->file_base64,
+            'logo' => $this->logo
         ];
     }
 }
