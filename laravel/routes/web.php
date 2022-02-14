@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\View;
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/test', 'TestController@index')->name('test');
 
 /**
 * トップページ

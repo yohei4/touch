@@ -8,6 +8,11 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push('ホーム', route('home'));
 });
 
+// Home
+Breadcrumbs::for('test', function (BreadcrumbTrail $trail) {
+    $trail->push('テスト', route('test'));
+});
+
 // 品書き
 Breadcrumbs::for('list', function (BreadcrumbTrail $trail) {
     $trail->push('お品書き');

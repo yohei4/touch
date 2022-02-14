@@ -24,7 +24,7 @@ class CreateRestaurantsTable extends Migration
             $table->string('logo')->nullable()->comment('ロゴ');
             $table->string('tel')->nullable()->comment('電話番号');
             $table->integer('table_count')->nullable()->comment('テーブル数');
-            $table->string('comment')->nullable()->comment('お店の説明欄');
+            $table->text('memo', 255)->nullable()->comment('お店の説明欄');
             $table->timestamps();
         });
     }
@@ -36,6 +36,9 @@ class CreateRestaurantsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('user');
+        Schema::dropIfExists('food_types');
+        Schema::dropIfExists('foods');
         Schema::dropIfExists('restaurants');
     }
 }

@@ -18,6 +18,7 @@ class Menu
             ['id' => 'home-btn-2', 'name' => '受注ページ', 'url' => '', 'summaryId' => '1'],
             ['id' => 'home-btn-3', 'name' => '売れ行き管理', 'url' => '', 'summaryId' => '1'],
             ['id' => 'home-btn-4', 'name' => 'お客様ページ管理', 'url' => '', 'summaryId' => '1'],
+            ['id' => 'home-btn-4', 'name' => 'テスト', 'url' => '/home/test', 'summaryId' => '1'],
         ],
         'list' => [
             ['id' => 'list-btn-1', 'name' => '商品一覧', 'url' => '/list/food-list', 'summaryId' => '2'],

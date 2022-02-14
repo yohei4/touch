@@ -15,10 +15,18 @@ class CreateFoodsTable extends Migration
     {
         Schema::create('foods', function (Blueprint $table) {
             $table->foreignId('restaurant_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('type_id')->comment('種類');
+            $table->foreignId('categories_id')->comment('種類');
             $table->id();
-            $table->string('name')->comment('商品名');
+            $table->string('name', 50)->comment('商品名');
             $table->integer('price')->comment('価格');
+            $table->string('image_1')->comment('画像1');
+            $table->string('image_2')->comment('画像2');
+            $table->string('image_3')->comment('画像3');
+            $table->string('image_4')->comment('画像4');
+            $table->string('image_5')->comment('画像5');
+            $table->string('movie')->comment('動画');
+            $table->string('status')->comment('状態');
+            $table->string('comment', 255)->comment('説明');
             $table->timestamps();
         });
     }
