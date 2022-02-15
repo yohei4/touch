@@ -78,7 +78,7 @@ const RestaurantInformationForm = () => {
                 <InputText
                     id={'restaurant_name'}
                     name={'restaurant_name'}
-                    txt={'店舗名'}
+                    label={'店舗名'}
                     value={data.restaurant_name}
                     required={true}
                     onChange={handleChange}
@@ -86,7 +86,7 @@ const RestaurantInformationForm = () => {
                 <InputText
                     id={'postal_code'}
                     name={'postal_code'}
-                    txt={'郵便番号'}
+                    label={'郵便番号'}
                     value={data.postal_code}
                     required={true}
                     onChange={handleChange}
@@ -94,7 +94,7 @@ const RestaurantInformationForm = () => {
                 <Select
                     id={'address_1'}
                     name={'address_1'}
-                    txt={'都道府県'}
+                    label={'都道府県'}
                     value={data.address_1}
                     options={Const.PREF_OPTIONS}
                     required={true}
@@ -103,7 +103,7 @@ const RestaurantInformationForm = () => {
                 <InputText
                     id={'address_2'}
                     name={'address_2'}
-                    txt={'市区町村'}
+                    label={'市区町村'}
                     value={data.address_2}
                     required={true}
                     onChange={handleChange}
@@ -111,7 +111,7 @@ const RestaurantInformationForm = () => {
                 <InputText
                     id={'address_3'}
                     name={'address_3'}
-                    txt={'番地'}
+                    label={'番地'}
                     value={data.address_3}
                     required={true}
                     onChange={handleChange}
@@ -119,14 +119,14 @@ const RestaurantInformationForm = () => {
                 <InputText
                     id={'address_4'}
                     name={'address_4'}
-                    txt={'建物名・部屋番号'}
+                    label={'建物名・部屋番号'}
                     value={data.address_4}
                     onChange={handleChange}
                 />
                 <InputText
                     id={'tel'}
                     name={'tel'}
-                    txt={'電話番号'}
+                    label={'電話番号'}
                     value={data.tel}
                     required={true}
                     onChange={handleChange}
@@ -134,7 +134,7 @@ const RestaurantInformationForm = () => {
                 <TextArea
                     id={'comment'}
                     name={'comment'}
-                    txt={'お店の説明文'}
+                    label={'お店の説明文'}
                     value={data.comment}
                     rows={5}
                     onChange={handleChange}
@@ -142,14 +142,14 @@ const RestaurantInformationForm = () => {
                 <InputText
                     id={'table_count'}
                     name={'table_count'}
-                    txt={'テーブル数'}
+                    label={'テーブル数'}
                     value={data.table_count}
                     required={true}
                     onChange={handleChange}
                 />
                 <FileUpLoader
                     name={'logo'}
-                    txt={'ロゴ写真(最大1枚)'}
+                    label={'ロゴ写真(最大1枚)'}
                     max={1}
                     // value={data.logo}
                 />
