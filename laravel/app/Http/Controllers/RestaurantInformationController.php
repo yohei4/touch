@@ -88,19 +88,10 @@ class RestaurantInformationController extends Controller
 
     public function getRestaurntData()
     {
-        $disk_name = 'local';
         $data = Restaurant::find(Auth::user()->restaurant_id);
-        $file_name = $data->logo;
+        $image_path = $data->logo;
 
-        $exists = Storage::disk($disk_name)->exists($file_name);
-
-        if ($exists) {
-            $file = Storage::disk($disk_name)->get($file_name);
-            // $data->file_data = 'data:image/jpeg;base64,' . base64_encode($file);
-            $data->file_base64 = base64_encode($file);
-        } else {
-            $data->file_base64 = '';
-        }
+        $data->logo = Image::getImage($image_path);
 
         return new RestaurantdataResource($data);
     }

@@ -51,8 +51,3 @@ function Modal(props: ModalProps) {
 };
 
 export default Modal;
-
-if (document.getElementById('modal-main')) {
-    ReactDOM.render(<Modal modalIsOpen={true}/>, document.getElementById('modal-main'));
-}
-
