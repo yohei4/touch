@@ -4,7 +4,7 @@ import Preview from './Preview';
 
 interface FileUpLoaderProps {
     name: string;
-    txt: string;
+    label: string;
     max: number;
     required?: boolean;
 };
@@ -59,14 +59,14 @@ const FileUpLoader = (props: FileUpLoaderProps) => {
         <React.StrictMode>
             <div className="form-item">
                 <div className="form-item__label">
-                    <label className="form-item__label--txt" htmlFor={props.name}>{props.txt}</label>
+                    <label className="form-item__label--txt" htmlFor={props.name}>{props.label}</label>
                     { props.required === true ? <span className="form-required"></span> : null }
                 </div>
                 <div className="form-item__container">
                     <div {...getRootProps({className: 'form-item__dropzone'})} ref={dropZoneRef}>
                         <input {...getInputProps()} ref={inputRef} name={props.name} />
                         <div>
-                            <button type="button" className="form-item__dropzone__btn" onClick={open}><i className="fas fa-camera"></i><span className="form-item__dropzone__btn--txt">画像を選択する</span></button>
+                            <button type="button" className="form-item__dropzone__btn"><i className="fas fa-camera"></i><span className="form-item__dropzone__btn--txt">画像を選択する</span></button>
                             <span className="form-item__dropzone--txt">または、ドラッグ&ドロップ</span>
                         </div>
                     </div>

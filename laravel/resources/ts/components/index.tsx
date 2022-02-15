@@ -1,12 +1,10 @@
 // フォーム部品
 export {default as Button} from './utility/form/Button';
-// export {default as InputText} from './utility/form/InputText';
-export {default as InputText} from './utility/form/InputText/InputText';
+export {default as InputText} from './utility/form/InputText';
 export {default as InputFile} from './utility/form/InputFile';
-// export {default as Select} from './utility/form/Select';
-export {default as Select} from './utility/form/Select/Select';
-// export {default as TextArea} from './utility/form/TextArea';
-export {default as TextArea} from './utility/form/TextArea/TextArea';
+export {default as Select} from './utility/form/Select';
+export {default as TextArea} from './utility/form/TextArea';
+
 
 // 画像選択用
 export {default as FileUpLoader} from './utility/fileUpLoader/FileUpLoader';
