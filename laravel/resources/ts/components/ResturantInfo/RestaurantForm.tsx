@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState, useLayoutEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Const from '../Const';
-import ReactDOM from 'react-dom';
-import { InputText, FileUpLoader, Select, TextArea, Button } from '../index';
+import { InputText, FileUpLoader, Select, TextArea, Button, Loader } from '../index';
 
 const RestaurantInformationForm = () => {
 
@@ -75,6 +74,7 @@ const RestaurantInformationForm = () => {
     return (
         <React.Fragment>
             <form id="restaurant-information" className="form" onSubmit={() => handleSubmit()}>
+                <Loader/>
                 <InputText
                     id={'restaurant_name'}
                     name={'restaurant_name'}
