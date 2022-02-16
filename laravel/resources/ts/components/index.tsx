@@ -5,6 +5,8 @@ export {default as InputFile} from './utility/form/InputFile';
 export {default as Select} from './utility/form/Select';
 export {default as TextArea} from './utility/form/TextArea';
 
+// ローディング
+export {default as Loader} from './utility/loader/Loader';
 
 // 画像選択用
 export {default as FileUpLoader} from './utility/fileUpLoader/FileUpLoader';
