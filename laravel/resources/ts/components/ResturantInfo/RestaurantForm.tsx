@@ -74,7 +74,6 @@ const RestaurantInformationForm = () => {
     return (
         <React.Fragment>
             <form id="restaurant-information" className="form" onSubmit={() => handleSubmit()}>
-                <Loader/>
                 <InputText
                     id={'restaurant_name'}
                     name={'restaurant_name'}

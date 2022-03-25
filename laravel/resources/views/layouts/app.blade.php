@@ -32,6 +32,7 @@
         <div id="modal-main"></div>
     </div>
 @endif
+    <div class='loader'></div>
     <header id="header" class="header">
         @include('layouts.header')
     </header>

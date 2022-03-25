@@ -17,7 +17,7 @@ const FileUpLoader = (props: FileUpLoaderProps) => {
     const dropZoneRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    let { getRootProps, getInputProps, open } = useDropzone({
+    let { getRootProps, getInputProps } = useDropzone({
         accept: 'image/*',
         onDrop: (acceptedFiles) => {
             let newKey = key;
